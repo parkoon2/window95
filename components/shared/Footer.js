@@ -3,29 +3,25 @@ import React from 'react'
 const Footer = () => {
     return (
         <div className="footer">
-            {/* <div className="hr" /> */}
-            <div className="contents">
-                <div className="col">
-                    <div className="title">connect with me</div>
-                    <div className="body">
-                        <span>ig @parkoon</span>
-                    </div>
-                </div>
-                <div className="col">
-                    <div className="title">follow me</div>
-                    <div className="body">
-                        <span className="fb">fb</span>
-                        <span className="gh">gh</span>
-                        <span className="tw">tw</span>
-                        <span className="yt">yt</span>
-                    </div>
-                </div>
-                <div className="col">
-                    <div className="title">say hello</div>
-                    <div className="body">
-                        <span>devparkoon@gmail.com</span>
-                    </div>
-                </div>
+            <div className="start">
+                <img src="static/icons/start.png" className="start__icon" />
+                <div className="start__title">Start</div>
+            </div>
+
+            <div className="divider" />
+            <div className="divider shadow" />
+
+            <div className="task-bar">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+            </div>
+            <div className="divider" />
+            <div className="divider shadow" />
+            <div className="divider" />
+            <div className="time-zone">
+                <div className="volume" />
+                <span>10:24 PM</span>
             </div>
         </div>
     )

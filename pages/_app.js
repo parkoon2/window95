@@ -7,6 +7,7 @@ import Loading from '../components/Loading'
 
 import '../styles/reset.css'
 import '../styles/main.css'
+import Footer from '../components/shared/Footer'
 // import '../styles/common.css'
 
 // import 'react-toastify/dist/ReactToastify.css'
@@ -14,22 +15,27 @@ class MyApp extends App {
     static async getInitialProps({ Component, router, ctx }) {
         let pageProps = {}
 
+        let isLoaded = false
+
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx)
         }
 
-        return { pageProps }
+        return { pageProps, isLoaded }
     }
 
     render() {
-        const { Component, pageProps } = this.props
+        const { Component, pageProps, isLoaded } = this.props
         return (
             <Container>
-                <Loading />
-
-                {/* <BaseLayout>
-                    <Component {...pageProps} />
-                </BaseLayout> */}
+                {isLoaded ? (
+                    <Loading />
+                ) : (
+                    <BaseLayout>
+                        <Component {...pageProps} />
+                        <Footer />
+                    </BaseLayout>
+                )}
             </Container>
         )
     }
