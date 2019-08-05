@@ -13,6 +13,45 @@
     border-bottom: 1px solid gray;
     margin-left: 0px;
 }
+.menu {
+    position: absolute;
+    background: #c1c1c1;
+    width: 270px;
+    height: 500px;
+    bottom: 32px;
+    left: 2px;
+    display: flex;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.menu.active {
+    display: block;
+}
+.menu .menu__title {
+    height: 100%;
+    width: 32px;
+    background: #7f777f;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    color: #c1c1c1;
+    font-weight: 900;
+    font-size: 1.8rem;
+    box-sizing: border-box;
+    line-height: 32px;
+    padding: 8px 0px;
+    /* line-height: 100px; */
+}
+
+.menu .menu__title span {
+    color: #fff;
+}
+
+.menu ul {
+    flex: 10;
+}
 .footer {
     position: fixed;
     bottom: 0;
