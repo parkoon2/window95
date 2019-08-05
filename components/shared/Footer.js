@@ -8,20 +8,29 @@ const Footer = () => {
                 <div className="start__title">Start</div>
             </div>
 
-            <div className="divider" />
-            <div className="divider shadow" />
-
             <div className="task-bar">
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
+                <div className="divider" />
+                <div className="divider shadow" />
+                <div>
+                    <img src="static/icons/search.png" />
+                </div>
+                <div>
+                    <img src="static/icons/search.png" />
+                </div>
+                <div>
+                    <img src="static/icons/search.png" />
+                </div>
+                <div className="divider" />
+                <div className="divider shadow" />
             </div>
             <div className="divider" />
-            <div className="divider shadow" />
-            <div className="divider" />
             <div className="time-zone">
-                <div className="volume" />
-                <span>10:24 PM</span>
+                <div className="time-zone__image">
+                    <img src="static/icons/sound.ico" />
+                </div>
+                <span className="time">
+                    10:24 <span>PM</span>
+                </span>
             </div>
         </div>
     )

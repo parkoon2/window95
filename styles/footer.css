@@ -1,3 +1,18 @@
+.divider {
+    height: 80%;
+    width: 1px;
+    background: gray;
+    margin: 0 4px;
+}
+
+.divider.shadow {
+    height: 65%;
+    width: 2px;
+    background: #fff;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    margin-left: 0px;
+}
 .footer {
     position: fixed;
     bottom: 0;
@@ -21,14 +36,63 @@
     box-sizing: border-box;
     float: left;
     padding: 0;
+    cursor: default;
     /* background: red; */
 }
+
 .footer .start .start__icon {
-    width: 27px;
+    width: 23px;
     height: 23px;
 }
 .footer .start .start__title {
     display: inline-block;
     font-weight: bold;
     margin-left: 7px;
+}
+
+.footer .task-bar {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    align-items: center;
+}
+
+.footer .task-bar div {
+    /* padding: 2px; */
+    margin-right: 1px;
+}
+.footer .task-bar div:last-child {
+    margin-right: 0;
+}
+
+.footer .task-bar div img {
+    width: 80%;
+    /* width: 100%;
+    height: 100%; */
+}
+
+.footer .time-zone {
+    float: right;
+    border: 1px solid gray;
+    /* padding: 10px; */
+    line-height: 25px;
+    margin: 0 2px;
+    padding: 0 4px;
+    font-size: 0.9rem;
+    box-shadow: inset 0 0 2px #888;
+}
+
+.footer .time-zone .time {
+    margin-left: 4px;
+}
+.footer .time-zone .time-zone__image {
+    width: 23px;
+    height: 23px;
+    display: inline-block;
+    text-align: center;
+}
+
+.footer .time-zone .time-zone__image img {
+    width: 90%;
+    height: 90%;
 }
