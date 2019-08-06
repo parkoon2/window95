@@ -8,6 +8,7 @@ import Loading from '../components/Loading'
 import '../styles/reset.css'
 import '../styles/main.css'
 import Footer from '../components/shared/Footer'
+import { MenuContextProvider } from '../context/menuContext'
 // import '../styles/common.css'
 
 // import 'react-toastify/dist/ReactToastify.css'
@@ -32,8 +33,10 @@ class MyApp extends App {
                     <Loading />
                 ) : (
                     <BaseLayout>
-                        <Component {...pageProps} />
-                        <Footer />
+                        <MenuContextProvider>
+                            <Component {...pageProps} />
+                            <Footer />
+                        </MenuContextProvider>
                     </BaseLayout>
                 )}
             </Container>
