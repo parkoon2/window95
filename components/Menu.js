@@ -1,7 +1,15 @@
 import React, { useContext } from 'react'
 import classnames from 'classnames'
 import { menuContext } from '../context/menuContext'
-import { CanvasIcon } from './Icon'
+import {
+    ShutDown,
+    Run,
+    Help,
+    Find,
+    Settings,
+    Documents,
+    Programs
+} from './Icon'
 
 const Menu = () => {
     const menu = useContext(menuContext)
@@ -13,26 +21,32 @@ const Menu = () => {
                 </div>
                 <ul>
                     <li>
+                        <Programs />
                         <span>P</span>rograms
                     </li>
                     <li>
-                        <span>D</span>cument
+                        <Documents />
+                        <span>D</span>cuments
                     </li>
                     <li>
+                        <Settings />
                         <span>S</span>ettings
                     </li>
                     <li>
+                        <Find />
                         <span>F</span>ind
                     </li>
                     <li>
+                        <Help />
                         <span>H</span>elp
                     </li>
                     <li>
+                        <Run />
                         <span>R</span>un
                     </li>
                     <div className="divider horizontal" />
                     <li>
-                        <CanvasIcon />
+                        <ShutDown />
                         Shu<span>t</span> Down..
                     </li>
                 </ul>
