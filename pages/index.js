@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import WindowIcon from '../components/WindowIcon'
 import Icon from '../components/Icon'
+import classnames from 'classnames'
+import { withIconContext, iconContext } from '../context/iconContext'
 // import '../styles/home.css'
 
 const INITIAL_ICONS = [
@@ -19,18 +21,50 @@ const INITIAL_ICONS = [
             x: 0,
             y: 100
         }
+    },
+    {
+        name: 'internet',
+        title: 'The internet',
+        pos: {
+            x: 0,
+            y: 200
+        }
+    },
+    {
+        name: 'briefcase',
+        title: 'My Briefcase',
+        pos: {
+            x: 0,
+            y: 300
+        }
+    },
+    {
+        name: 'inbox',
+        title: 'Inbox',
+        pos: {
+            x: 0,
+            y: 400
+        }
     }
 ]
 
 const Home = () => {
+    const iconCtx = useContext(iconContext)
+
     const renderIcons = () =>
         INITIAL_ICONS.map((icon, index) => (
             <li
                 key={index}
                 className="item"
                 style={{ top: icon.pos.y, left: icon.pos.x }}
+                onDoubleClick={() => alert('double click')}
+                onClick={iconCtx.toggle}
             >
-                <Icon name={icon.name} title={icon.title} />
+                <Icon
+                    name={icon.name}
+                    title={icon.title}
+                    pressed={iconCtx.pressed}
+                />
             </li>
         ))
     return (
@@ -48,4 +82,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default withIconContext(Home)

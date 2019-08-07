@@ -25,6 +25,23 @@
     cursor: default;
     /* background: red; */
 }
+.footer .start.pressed {
+    position: relative;
+    width: 79px;
+    height: 27px;
+    padding: 0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000 #fff #fff #000;
+    background-color: silver;
+}
+.footer .start.pressed::after {
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 72%;
+    border: 1px dotted #000;
+}
 
 .footer .start .start__icon {
     width: 23px;

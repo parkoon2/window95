@@ -11,7 +11,10 @@ const Footer = props => {
         <>
             <Menu />
             <div className="footer">
-                <div className="start" onClick={menu.toggle}>
+                <div
+                    className={classnames('start', { pressed: menu.active })}
+                    onClick={menu.toggle}
+                >
                     <img src="static/icons/start.png" className="start__icon" />
                     <div className="start__title active">Start</div>
                 </div>

@@ -7,10 +7,16 @@
 .icon__container .title {
     color: #fff;
     margin-top: 7px;
-    background: #000;
+    /* background: #000; */
     padding: 7px;
-    border: 1px dashed #fff;
+    /* border: 1px dashed #fff; */
     font-size: 0.8rem;
+    width: 82px;
+}
+
+.icon__container .title.pressed {
+    background: #000;
+    border: 1px dashed #fff;
 }
 
 .icon__container .icon {

@@ -9,6 +9,7 @@ import '../styles/reset.css'
 import '../styles/index.css'
 import Footer from '../components/shared/Footer'
 import { MenuContextProvider } from '../context/menuContext'
+import { IconContextProvider } from '../context/iconContext'
 // import '../styles/common.css'
 
 // import 'react-toastify/dist/ReactToastify.css'
@@ -33,10 +34,12 @@ class MyApp extends App {
                     <Loading />
                 ) : (
                     <BaseLayout>
-                        <MenuContextProvider>
-                            <Component {...pageProps} />
-                            <Footer />
-                        </MenuContextProvider>
+                        <IconContextProvider>
+                            <MenuContextProvider>
+                                <Component {...pageProps} />
+                                <Footer />
+                            </MenuContextProvider>
+                        </IconContextProvider>
                     </BaseLayout>
                 )}
             </Container>
