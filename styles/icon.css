@@ -1,6 +1,7 @@
 .icon__container {
     display: inline-block;
     text-align: center;
+    user-select: none;
 }
 
 .icon__container .title {

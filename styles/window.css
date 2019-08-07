@@ -2,4 +2,19 @@
     width: 100%;
     height: 100vh;
     background: #008081;
+    overflow: hidden;
+}
+
+.window__container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    height: 100%;
+    width: 300px;
+}
+
+.window__container .item {
+    width: 107px;
+    height: 77px;
 }

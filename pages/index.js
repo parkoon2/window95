@@ -7,8 +7,155 @@ class Home extends React.Component {
     render() {
         return (
             <div className="window">
-                {/* <WindowIcon /> */}
-                <Icon name="computer" title={'My Computer'} />
+                <ul className="window__container">
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                    <li>
+                        <Icon
+                            className="item"
+                            name="computer"
+                            title={'My Computer'}
+                            styles={{ margin: '10px' }}
+                        />
+                    </li>
+                </ul>
             </div>
         )
     }
