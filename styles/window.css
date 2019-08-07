@@ -6,15 +6,20 @@
 }
 
 .window__container {
-    display: flex;
+    position: relative;
+    /* display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: flex-start;
     height: 100%;
-    width: 300px;
+    width: 700px; */
 }
 
 .window__container .item {
-    width: 107px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
     height: 77px;
 }
