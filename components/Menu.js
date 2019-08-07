@@ -22,32 +22,50 @@ const Menu = () => {
                 <ul>
                     <li>
                         <Programs />
-                        <span>P</span>rograms
+                        <span>
+                            <u>P</u>rograms
+                        </span>
+                        <div className="right-arrow" />
                     </li>
                     <li>
                         <Documents />
-                        <span>D</span>cuments
+                        <span>
+                            <u>D</u>cuments
+                        </span>
+                        <div className="right-arrow" />
                     </li>
                     <li>
                         <Settings />
-                        <span>S</span>ettings
+                        <span>
+                            <u>S</u>ettings
+                        </span>
+                        <div className="right-arrow" />
                     </li>
                     <li>
                         <Find />
-                        <span>F</span>ind
+                        <span>
+                            <u>F</u>ind
+                        </span>
+                        <div className="right-arrow" />
                     </li>
                     <li>
                         <Help />
-                        <span>H</span>elp
+                        <span>
+                            <u>H</u>elp
+                        </span>
                     </li>
                     <li>
                         <Run />
-                        <span>R</span>un
+                        <span>
+                            <u>R</u>un
+                        </span>
                     </li>
-                    <div className="divider horizontal" />
+                    <div className="horizontal" />
                     <li>
                         <ShutDown />
-                        Shu<span>t</span> Down..
+                        <span>
+                            Shu<u>t</u> Down..
+                        </span>
                     </li>
                 </ul>
             </div>

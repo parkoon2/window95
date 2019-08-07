@@ -1,0 +1,22 @@
+.vertical {
+    height: 80%;
+    width: 1px;
+    background: gray;
+    margin: 0 4px;
+}
+
+.vertical.shadow {
+    height: 65%;
+    width: 2px;
+    background: #fff;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.horizontal {
+    height: 2px;
+    width: 100%;
+    background: gray;
+    border-bottom: 1px solid #fff;
+    margin: 0;
+}

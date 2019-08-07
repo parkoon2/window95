@@ -17,8 +17,8 @@ const Footer = props => {
                 </div>
 
                 <div className="task-bar">
-                    <div className="divider" />
-                    <div className="divider shadow" />
+                    <div className="vertical" />
+                    <div className="vertical shadow" />
                     <div>
                         <img src="static/icons/search.png" />
                     </div>
@@ -28,10 +28,10 @@ const Footer = props => {
                     <div>
                         <img src="static/icons/search.png" />
                     </div>
-                    <div className="divider" />
-                    <div className="divider shadow" />
+                    <div className="vertical" />
+                    <div className="vertical shadow" />
                 </div>
-                <div className="divider" />
+                <div className="vertical" />
                 <div className="time-zone">
                     <div className="time-zone__image">
                         <img src="static/icons/sound.ico" />

@@ -6,7 +6,7 @@ import Loading from '../components/Loading'
 // import '../styles/main.scss'
 
 import '../styles/reset.css'
-import '../styles/main.css'
+import '../styles/index.css'
 import Footer from '../components/shared/Footer'
 import { MenuContextProvider } from '../context/menuContext'
 // import '../styles/common.css'
