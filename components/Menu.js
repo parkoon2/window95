@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import classnames from 'classnames'
 import { menuContext } from '../context/menuContext'
-import {
+import Icon, {
     ShutDown,
     Run,
     Help,
@@ -21,48 +21,48 @@ const Menu = () => {
                 </div>
                 <ul>
                     <li>
-                        <Programs />
+                        <Icon name="programs" />
                         <span>
                             <u>P</u>rograms
                         </span>
                         <div className="right-arrow" />
                     </li>
                     <li>
-                        <Documents />
+                        <Icon name="documents" />
                         <span>
                             <u>D</u>cuments
                         </span>
                         <div className="right-arrow" />
                     </li>
                     <li>
-                        <Settings />
+                        <Icon name="settings" />
                         <span>
                             <u>S</u>ettings
                         </span>
                         <div className="right-arrow" />
                     </li>
                     <li>
-                        <Find />
+                        <Icon name="find" />
                         <span>
                             <u>F</u>ind
                         </span>
                         <div className="right-arrow" />
                     </li>
                     <li>
-                        <Help />
+                        <Icon name="help" />
                         <span>
                             <u>H</u>elp
                         </span>
                     </li>
                     <li>
-                        <Run />
+                        <Icon name="run" />
                         <span>
                             <u>R</u>un
                         </span>
                     </li>
                     <div className="horizontal" />
                     <li>
-                        <ShutDown />
+                        <Icon name="shutdown" />
                         <span>
                             Shu<u>t</u> Down..
                         </span>
