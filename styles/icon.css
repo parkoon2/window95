@@ -12,11 +12,13 @@
     /* border: 1px dashed #fff; */
     font-size: 0.8rem;
     width: 82px;
+    /* box-sizing: border-box; */
 }
 
 .icon__container .title.pressed {
-    background: #000;
-    border: 1px dashed #fff;
+    background: navy;
+    border: 1px dotted #fff;
+    /* box-sizing: border-box; */
 }
 
 .icon__container .icon {
@@ -24,9 +26,9 @@
     height: 32px;
 }
 
-.icon__container .icon.sm {
+.icon__container .icon.s {
     width: 16px;
-    height: 16px;
+    height: 14px;
 }
 
 .icon__container .icon.m {

@@ -1,0 +1,121 @@
+.popup__container {
+    position: absolute;
+    left: 320px;
+    top: 40px;
+    /* display: none; */
+    width: 500px;
+    height: 630px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: silver #000 #000 silver;
+    background: #fff;
+}
+.popup__container .container__frame {
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #fff grey grey #fff;
+    box-sizing: border-box;
+}
+
+.popup__container .container__frame .frame__padding {
+    width: 100%;
+    height: 100%;
+    border: 2px solid silver;
+    box-sizing: border-box;
+    /* overflow: auto; */
+}
+
+.popup__container .container__frame .frame__padding header {
+    display: flex;
+    background: navy;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 3px;
+}
+
+.popup__container .container__frame .frame__padding header .btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup__container .container__frame .frame__padding header .btns .btn {
+    line-height: 0;
+}
+.popup__container .container__frame .frame__padding header .title {
+    font-size: 0.8rem;
+    color: #fff;
+    margin-left: 2.5px;
+}
+
+.popup__container .container__frame .frame__padding .action-bar {
+    background: #c1c1c1;
+    line-height: 1.4rem;
+}
+
+.popup__container .container__frame .frame__padding .action-bar span {
+    font-size: 0.8rem;
+    padding: 3px;
+    margin-right: 7px;
+    margin-left: 3px;
+}
+
+.popup__container .container__frame .frame__padding .contents {
+    /* overflow: hidden; */
+    overflow: auto;
+    width: 100%;
+    height: 581px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background: #fff;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000 grey grey #000;
+    -moz-box-shadow: inset 0 0 2px #000;
+    -webkit-box-shadow: inset 0 0 2px #000;
+    box-shadow: inset 0px 0px 2px #000;
+}
+
+.contents {
+}
+
+.contents img {
+    width: 277px;
+    box-shadow: 5px 5px 2px 1px #000;
+}
+
+.contents .devider {
+    width: 100%;
+    height: 1px;
+    background: lightgray;
+    margin: 27px auto;
+}
+.contents .about {
+}
+
+.contents .about h1,
+.contents .techsheet h1,
+.contents .resources h1 {
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.contents .about p {
+    line-height: 1.2rem;
+}
+
+.contents .techsheet ul {
+}
+
+.contents .techsheet ul li {
+    margin-bottom: 12px;
+}
+
+.contents .techsheet ul li:last-child {
+    margin: 0;
+}

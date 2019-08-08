@@ -10,6 +10,7 @@ import '../styles/index.css'
 import Footer from '../components/shared/Footer'
 import { MenuContextProvider } from '../context/menuContext'
 import { IconContextProvider } from '../context/iconContext'
+import Popup from '../components/Pupup'
 // import '../styles/common.css'
 
 // import 'react-toastify/dist/ReactToastify.css'
@@ -26,22 +27,29 @@ class MyApp extends App {
         return { pageProps, isLoaded }
     }
 
+    renderWindowIfLoaded = () => {
+        const { Component, pageProps, isLoaded } = this.props
+
+        return isLoaded ? (
+            <Loading />
+        ) : (
+            <BaseLayout>
+                <IconContextProvider>
+                    <MenuContextProvider>
+                        <Component {...pageProps} />
+                        <Footer />
+                    </MenuContextProvider>
+                </IconContextProvider>
+            </BaseLayout>
+        )
+    }
+
     render() {
         const { Component, pageProps, isLoaded } = this.props
         return (
             <Container>
-                {isLoaded ? (
-                    <Loading />
-                ) : (
-                    <BaseLayout>
-                        <IconContextProvider>
-                            <MenuContextProvider>
-                                <Component {...pageProps} />
-                                <Footer />
-                            </MenuContextProvider>
-                        </IconContextProvider>
-                    </BaseLayout>
-                )}
+                {this.renderWindowIfLoaded()}
+                <Popup />
             </Container>
         )
     }
