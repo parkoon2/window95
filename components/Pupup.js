@@ -1,13 +1,71 @@
-import React from 'react'
+import React, { useContext, useRef } from 'react'
 import Icon from './Icon'
+import { popupContext } from '../context/popupContext'
 
-const Popup = () => {
+const Popup = props => {
+    const { title, onClose, x, y } = props
+
+    const popupCtx = useContext(popupContext)
+    const wrapperRef = useRef()
+
+    let zIndex = 0
+    let isMouseDown = false
+
+    let pos1, pos2, pos3, pos4
+    // const { closePopup } = popupCtx
+
+    const handleMouseDown = e => {
+        console.log(1)
+        isMouseDown = true
+
+        pos3 = e.clientX
+        pos4 = e.clientY
+
+        // call a function whenever the cursor moves:
+        document.onmousemove = handleMouseMove
+        document.onmouseup = handleMouseUp
+    }
+
+    const handleMouseMove = e => {
+        if (!isMouseDown) return
+        console.log(2, e.clientX, e.clientY)
+        pos1 = pos3 - e.clientX
+        pos2 = pos4 - e.clientY
+        pos3 = e.clientX
+        pos4 = e.clientY
+
+        wrapperRef.current.style.top =
+            wrapperRef.current.offsetTop - pos2 + 'px'
+        wrapperRef.current.style.left =
+            wrapperRef.current.offsetLeft - pos1 + 'px'
+    }
+
+    const handleMouseUp = () => {
+        console.log(3)
+        isMouseDown = false
+    }
+
     return (
-        <div className="popup__container">
+        <div
+            // draggable
+            className="popup__container"
+            style={{
+                top: y,
+                left: x
+            }}
+            ref={wrapperRef}
+            onClick={e => {
+                wrapperRef.current.style.zIndex = ++zIndex
+                console.log(wrapperRef)
+            }}
+            onMouseDown={handleMouseDown}
+            // onMouseUp={handleMouseUp}
+            // onMouseMove={handleMouseMove}
+        >
             <div className="container__frame">
                 <div className="frame__padding">
                     <header>
-                        <span className="title">THiS iS title</span>
+                        <span className="title">{title}</span>
                         <div className="btns">
                             <div className="btn">
                                 <Icon size="s" name="minimize" />
@@ -15,7 +73,7 @@ const Popup = () => {
                             <div className="btn">
                                 <Icon size="s" name="fullscreen" />
                             </div>
-                            <div className="btn">
+                            <div className="btn" onClick={onClose}>
                                 <Icon size="s" name="close" />
                             </div>
                         </div>

@@ -9,7 +9,7 @@ import '../styles/reset.css'
 import '../styles/index.css'
 import Footer from '../components/shared/Footer'
 import { MenuContextProvider } from '../context/menuContext'
-import { IconContextProvider } from '../context/iconContext'
+import { PopupContextProvider } from '../context/popupContext'
 import Popup from '../components/Pupup'
 // import '../styles/common.css'
 
@@ -34,12 +34,12 @@ class MyApp extends App {
             <Loading />
         ) : (
             <BaseLayout>
-                <IconContextProvider>
+                <PopupContextProvider>
                     <MenuContextProvider>
                         <Component {...pageProps} />
                         <Footer />
                     </MenuContextProvider>
-                </IconContextProvider>
+                </PopupContextProvider>
             </BaseLayout>
         )
     }
@@ -49,7 +49,7 @@ class MyApp extends App {
         return (
             <Container>
                 {this.renderWindowIfLoaded()}
-                <Popup />
+                {/* <Popup title={'hello1'} /> */}
             </Container>
         )
     }

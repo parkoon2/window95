@@ -1,8 +1,11 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import WindowIcon from '../components/WindowIcon'
 import Icon from '../components/Icon'
 import classnames from 'classnames'
-import { withIconContext, iconContext } from '../context/iconContext'
+import Popup from '../components/Pupup'
+import uuidv1 from 'uuid/v1'
+import { popupContext } from '../context/popupContext'
+
 // import '../styles/home.css'
 
 const INITIAL_ICONS = [
@@ -49,7 +52,8 @@ const INITIAL_ICONS = [
 ]
 
 const Home = () => {
-    const iconCtx = useContext(iconContext)
+    const popupCtx = useContext(popupContext)
+    const { openPopup, closePopup, popups } = popupCtx
 
     const renderIcons = () =>
         INITIAL_ICONS.map((icon, index) => (
@@ -57,20 +61,17 @@ const Home = () => {
                 key={index}
                 className="item"
                 style={{ top: icon.pos.y, left: icon.pos.x }}
-                onDoubleClick={() => alert('double click')}
-                onClick={iconCtx.toggle}
+                onDoubleClick={() => openPopup('hello')}
             >
-                <Icon
-                    name={icon.name}
-                    title={icon.title}
-                    pressed={iconCtx.pressed}
-                />
+                <Icon name={icon.name} title={icon.title} />
             </li>
         ))
     return (
         <div className="window">
             <ul className="window__container">
                 {renderIcons()}
+
+                {popups.map(popup => popup.component)}
                 {/* <li className="item" style={{ top: '0', left: '0' }}>
                     <Icon name="computer" title={'My Computer'} />
                 </li>
@@ -82,4 +83,4 @@ const Home = () => {
     )
 }
 
-export default withIconContext(Home)
+export default Home
