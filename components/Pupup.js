@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useEffect } from 'react'
 import Icon from './Icon'
 import { popupContext } from '../context/popupContext'
 
@@ -12,10 +12,8 @@ const Popup = props => {
     let isMouseDown = false
 
     let pos1, pos2, pos3, pos4
-    // const { closePopup } = popupCtx
 
     const handleMouseDown = e => {
-        console.log(1)
         isMouseDown = true
 
         pos3 = e.clientX
@@ -28,7 +26,7 @@ const Popup = props => {
 
     const handleMouseMove = e => {
         if (!isMouseDown) return
-        console.log(2, e.clientX, e.clientY)
+
         pos1 = pos3 - e.clientX
         pos2 = pos4 - e.clientY
         pos3 = e.clientX
@@ -41,8 +39,9 @@ const Popup = props => {
     }
 
     const handleMouseUp = () => {
-        console.log(3)
         isMouseDown = false
+        document.onmousemove = null
+        document.onmouseup = null
     }
 
     return (
@@ -51,20 +50,22 @@ const Popup = props => {
             className="popup__container"
             style={{
                 top: y,
-                left: x
+                left: x,
+                zIndex: 0
             }}
             ref={wrapperRef}
             onClick={e => {
-                wrapperRef.current.style.zIndex = ++zIndex
-                console.log(wrapperRef)
+                let biggiestZindex =
+                    [...document.querySelectorAll('.popup__container')]
+                        .map(el => el.style.zIndex)
+                        .sort()[0] * 1
+
+                wrapperRef.current.style.zIndex = ++biggiestZindex
             }}
-            onMouseDown={handleMouseDown}
-            // onMouseUp={handleMouseUp}
-            // onMouseMove={handleMouseMove}
         >
             <div className="container__frame">
                 <div className="frame__padding">
-                    <header>
+                    <header onMouseDown={handleMouseDown}>
                         <span className="title">{title}</span>
                         <div className="btns">
                             <div className="btn">

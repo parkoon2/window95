@@ -33,6 +33,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 2px 3px;
+    user-select: none;
 }
 
 .popup__container .container__frame .frame__padding header .btns {
@@ -60,6 +61,7 @@
     padding: 3px;
     margin-right: 7px;
     margin-left: 3px;
+    user-select: none;
 }
 
 .popup__container .container__frame .frame__padding .contents {
