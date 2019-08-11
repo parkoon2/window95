@@ -1,6 +1,6 @@
 import React, { createContext } from 'react'
 import uuidv1 from 'uuid/v1'
-import Popup from '../components/Pupup'
+import Popup from '../components/popup/Popup'
 
 export const popupContext = createContext()
 const { Provider, Consumer } = popupContext
@@ -23,8 +23,8 @@ export class PopupContextProvider extends React.Component {
                         <Popup
                             title={title}
                             onClose={() => this.closePopup(id)}
-                            x={100 + popups.length * 10}
-                            y={100 + popups.length * 10}
+                            x={100 + popups.length * 20}
+                            y={100 + popups.length * 20}
                         />
                     )
                 }

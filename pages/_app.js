@@ -10,7 +10,6 @@ import '../styles/index.css'
 import Footer from '../components/shared/Footer'
 import { MenuContextProvider } from '../context/menuContext'
 import { PopupContextProvider } from '../context/popupContext'
-import Popup from '../components/Pupup'
 // import '../styles/common.css'
 
 // import 'react-toastify/dist/ReactToastify.css'

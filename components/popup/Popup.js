@@ -1,17 +1,18 @@
-import React, { useContext, useRef, useEffect } from 'react'
-import Icon from './Icon'
-import { popupContext } from '../context/popupContext'
+import React, { useRef, useEffect } from 'react'
+import Icon from '../Icon'
+import Header from './Header'
 
 const Popup = props => {
     const { title, onClose, x, y } = props
 
-    const popupCtx = useContext(popupContext)
     const wrapperRef = useRef()
-
-    let zIndex = 0
     let isMouseDown = false
 
     let pos1, pos2, pos3, pos4
+
+    useEffect(() => {
+        wrapperRef.current.style.zIndex = getIndexOfPopupOnTop()
+    }, [])
 
     const handleMouseDown = e => {
         isMouseDown = true
@@ -44,28 +45,34 @@ const Popup = props => {
         document.onmouseup = null
     }
 
+    const getIndexOfPopupOnTop = () =>
+        ++[...document.querySelectorAll('.popup__container')]
+            .map(el => el.style.zIndex * 1) // string to number
+            .sort((a, b) => b - a)[0]
+
+    const moveToTopView = () => {
+        wrapperRef.current.style.zIndex = getIndexOfPopupOnTop()
+    }
+
     return (
         <div
             // draggable
             className="popup__container"
             style={{
                 top: y,
-                left: x,
-                zIndex: 0
+                left: x
             }}
             ref={wrapperRef}
-            onClick={e => {
-                let biggiestZindex =
-                    [...document.querySelectorAll('.popup__container')]
-                        .map(el => el.style.zIndex)
-                        .sort()[0] * 1
-
-                wrapperRef.current.style.zIndex = ++biggiestZindex
-            }}
+            onMouseDown={moveToTopView}
         >
             <div className="container__frame">
                 <div className="frame__padding">
-                    <header onMouseDown={handleMouseDown}>
+                    <Header
+                        wrapper={wrapperRef}
+                        title={title}
+                        onClose={onClose}
+                    />
+                    {/* <header onMouseDown={handleMouseDown}>
                         <span className="title">{title}</span>
                         <div className="btns">
                             <div className="btn">
@@ -78,7 +85,7 @@ const Popup = props => {
                                 <Icon size="s" name="close" />
                             </div>
                         </div>
-                    </header>
+                    </header> */}
                     <div className="action-bar">
                         <span>
                             <u>F</u>ile

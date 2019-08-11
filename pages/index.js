@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import WindowIcon from '../components/WindowIcon'
 import Icon from '../components/Icon'
 import classnames from 'classnames'
-import Popup from '../components/Pupup'
+import Popup from '../components/popup/Popup'
 import uuidv1 from 'uuid/v1'
 import { popupContext } from '../context/popupContext'
 
@@ -55,8 +55,8 @@ const Home = () => {
     const popupCtx = useContext(popupContext)
     const { openPopup, closePopup, popups } = popupCtx
 
-    const renderIcons = () =>
-        INITIAL_ICONS.map((icon, index) => (
+    const renderIcons = icons =>
+        icons.map((icon, index) => (
             <li
                 key={index}
                 className="item"
@@ -66,18 +66,16 @@ const Home = () => {
                 <Icon name={icon.name} title={icon.title} />
             </li>
         ))
+
+    const renderPopups = popups =>
+        popups.map((popup, index) => (
+            <React.Fragment key={index}>{popup.component}</React.Fragment>
+        ))
     return (
         <div className="window">
             <ul className="window__container">
-                {renderIcons()}
-
-                {popups.map(popup => popup.component)}
-                {/* <li className="item" style={{ top: '0', left: '0' }}>
-                    <Icon name="computer" title={'My Computer'} />
-                </li>
-                <li className="item" style={{ top: '100px', left: '0' }}>
-                    <Icon name="recyclebin" title={'My Computer'} />
-                </li> */}
+                {renderIcons(INITIAL_ICONS)}
+                {popups && renderPopups(popups)}
             </ul>
         </div>
     )
