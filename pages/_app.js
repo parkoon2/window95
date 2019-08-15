@@ -9,7 +9,7 @@ import '../styles/reset.css'
 import '../styles/index.css'
 import Footer from '../components/shared/Footer'
 import { MenuContextProvider } from '../context/menuContext'
-import { PopupContextProvider } from '../context/popupContext'
+import { WindowContextProvider } from '../context/windowContext'
 // import '../styles/common.css'
 
 // import 'react-toastify/dist/ReactToastify.css'
@@ -18,6 +18,8 @@ class MyApp extends App {
         let pageProps = {}
 
         let isLoaded = false
+
+        console.log('Component', Component)
 
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx)
@@ -33,12 +35,12 @@ class MyApp extends App {
             <Loading />
         ) : (
             <BaseLayout>
-                <PopupContextProvider>
+                <WindowContextProvider>
                     <MenuContextProvider>
                         <Component {...pageProps} />
                         <Footer />
                     </MenuContextProvider>
-                </PopupContextProvider>
+                </WindowContextProvider>
             </BaseLayout>
         )
     }

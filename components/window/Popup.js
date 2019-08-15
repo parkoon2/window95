@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import Icon from '../Icon'
 import Header from './Header'
+import ActionBar from './ActionBar'
 
 const Popup = props => {
     const { title, onClose, x, y } = props
@@ -86,20 +87,7 @@ const Popup = props => {
                             </div>
                         </div>
                     </header> */}
-                    <div className="action-bar">
-                        <span>
-                            <u>F</u>ile
-                        </span>
-                        <span>
-                            <u>E</u>dit
-                        </span>
-                        <span>
-                            <u>S</u>earch
-                        </span>
-                        <span>
-                            <u>H</u>elp
-                        </span>
-                    </div>
+                    <ActionBar />
                     <div className="contents">
                         <img src="static/images/landing.jpg" />
                         <div className="devider" />

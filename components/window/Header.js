@@ -4,12 +4,10 @@ import { useEffect, useState } from 'react'
 const Header = props => {
     const { title, onClose, wrapper } = props
 
-    const [fullscreen, togglefullscreen] = useState(false)
+    const [fullscreen, setFullscreen] = useState(false)
     let isMouseDown = false
 
     let pos1, pos2, pos3, pos4
-
-    let isFullScreen = false
 
     const handleMouseDown = e => {
         isMouseDown = true
@@ -40,6 +38,18 @@ const Header = props => {
         document.onmouseup = null
     }
 
+    const handleResizing = () => {
+        if (fullscreen) {
+            setFullscreen(false)
+            document.exitFullscreen()
+            document.querySelector('.contents').style.height = null
+        } else {
+            setFullscreen(true)
+            wrapper.current.requestFullscreen()
+            document.querySelector('.contents').style.height = '100%'
+        }
+    }
+
     return (
         <header onMouseDown={handleMouseDown}>
             <span className="title">{title}</span>
@@ -47,21 +57,7 @@ const Header = props => {
                 <div className="btn">
                     <Icon size="s" name="minimize" />
                 </div>
-                <div
-                    className="btn"
-                    onClick={() => {
-                        !fullscreen
-                            ? wrapper.current.requestFullscreen()
-                            : document.exitFullscreen()
-
-                        togglefullscreen(true)
-
-                        // 리액트 스타일로 어떻게 처리 할 수 있을까?
-                        document.querySelector('.contents').style.height =
-                            '100%'
-                        console.log(wrapper.current.style)
-                    }}
-                >
+                <div className="btn" onClick={handleResizing}>
                     <Icon size="s" name="fullscreen" />
                 </div>
                 <div className="btn" onClick={onClose}>
