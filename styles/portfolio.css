@@ -1,0 +1,27 @@
+.portfolio__image {
+    width: 277px;
+    box-shadow: 5px 5px 2px 1px #000;
+}
+
+.portfolio__about h1,
+.portfolio__techsheet h1,
+.portfolio__resources h1 {
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.portfolio__about p {
+    line-height: 1.2rem;
+}
+
+.portfolio__techsheet ul {
+}
+
+.portfolio__techsheet ul li {
+    margin-bottom: 12px;
+}
+
+.portfolio__techsheet ul li:last-child {
+    margin: 0;
+}

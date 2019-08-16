@@ -1,6 +1,83 @@
-.window {
+/* ------- window layout ------- */
+.window__layout {
+    position: absolute;
+    left: 320px;
+    top: 40px;
+    /* display: none; */
+    width: 500px;
+    height: 630px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: silver #000 #000 silver;
+    background: #fff;
+}
+.window__layout .layout__frame {
     width: 100%;
-    height: 100vh;
-    background: #008081;
-    overflow: hidden;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #fff grey grey #fff;
+    box-sizing: border-box;
+}
+
+.window__layout .layout__frame .frame__padding {
+    width: 100%;
+    height: 100%;
+    border: 2px solid silver;
+    box-sizing: border-box;
+    /* overflow: auto; */
+}
+
+.window__layout .layout__frame .frame__padding .contents {
+    /* overflow: hidden; */
+    overflow: auto;
+    width: 100%;
+    height: 581px;
+    padding: 10px;
+    background: #fff;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000 grey grey #000;
+    -moz-box-shadow: inset 0 0 2px #000;
+    -webkit-box-shadow: inset 0 0 2px #000;
+    box-shadow: inset 0px 0px 2px #000;
+}
+
+/* ------- action bar ------- */
+.action-header {
+    display: flex;
+    background: navy;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 3px;
+    user-select: none;
+}
+
+.action-header .btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-header .btns .btn {
+    line-height: 0;
+}
+.action-header .title {
+    font-size: 0.8rem;
+    color: #fff;
+    margin-left: 2.5px;
+}
+
+.action-bar {
+    background: #c1c1c1;
+    line-height: 1.4rem;
+}
+
+.action-bar span {
+    font-size: 0.8rem;
+    padding: 3px;
+    margin-right: 7px;
+    margin-left: 3px;
+    user-select: none;
 }

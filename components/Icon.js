@@ -3,12 +3,12 @@ import classnames from 'classnames'
 import '../styles/icon.css'
 
 function Icon({ name, size, title, styles, className = '' }) {
-    const [pressed, setPress] = useState(false)
+    const [pressed, setPressed] = useState(false)
     const containerRef = useRef(null)
 
     const handleClickOutside = e => {
         if (containerRef.current && !containerRef.current.contains(e.target)) {
-            setPress(false)
+            setPressed(false)
         }
     }
 
@@ -23,7 +23,7 @@ function Icon({ name, size, title, styles, className = '' }) {
         <div
             className={`icon__container ${className}`}
             style={{ ...styles }}
-            onClick={() => setPress(!pressed)}
+            onClick={() => setPressed(!pressed)}
             ref={containerRef}
         >
             <img

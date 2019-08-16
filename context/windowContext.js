@@ -1,14 +1,52 @@
 import React, { createContext } from 'react'
 import uuidv1 from 'uuid/v1'
-import Popup from '../components/window/Popup'
+import Portfolio from '../components/portfolio/Portfolio'
 import Folder from '../components/window/Folder'
+import PortForm from '../components/portfolio/PortForm'
 
-export const popupContext = createContext()
-const { Provider, Consumer } = popupContext
+export const windowContext = createContext()
+const { Provider, Consumer } = windowContext
 
 export class WindowContextProvider extends React.Component {
     state = {
-        windows: [] // 최대 3개
+        windows: [], // 최대 3개
+        warning: false,
+        warningMessage: ''
+    }
+
+    showWarning = message => {
+        this.setState({
+            warning: true,
+            warningMessage: message
+        })
+    }
+
+    hideWarning = () => {
+        this.setState({
+            warning: false,
+            warningMessage: ''
+        })
+    }
+
+    openPorfolioForm = () => {
+        const id = uuidv1()
+        const { windows } = this.state
+
+        this.setState({
+            windows: [
+                ...windows,
+                {
+                    id,
+                    component: (
+                        <Portfolio
+                            onClose={() => this.close(id)}
+                            x={100 + windows.length * 20}
+                            y={100 + windows.length * 20}
+                        />
+                    )
+                }
+            ]
+        })
     }
 
     openFolder = (title, items) => {
@@ -24,7 +62,7 @@ export class WindowContextProvider extends React.Component {
                         <Folder
                             title={title}
                             items={items}
-                            onClose={() => this.closeWindow(id)}
+                            onClose={() => this.close(id)}
                             x={100 + windows.length * 20}
                             y={100 + windows.length * 20}
                         />
@@ -34,7 +72,7 @@ export class WindowContextProvider extends React.Component {
         })
     }
 
-    openWindow = title => {
+    openPortfolio = detail => {
         const id = uuidv1()
         const { windows } = this.state
 
@@ -44,9 +82,9 @@ export class WindowContextProvider extends React.Component {
                 {
                     id,
                     component: (
-                        <Popup
-                            title={title}
-                            onClose={() => this.closeWindow(id)}
+                        <Portfolio
+                            detail={detail}
+                            onClose={() => this.close(id)}
                             x={100 + windows.length * 20}
                             y={100 + windows.length * 20}
                         />
@@ -56,28 +94,34 @@ export class WindowContextProvider extends React.Component {
         })
     }
 
-    closeWindow = id => {
+    close = id => {
         this.setState({
-            windows: this.state.windows.filter(popup => {
-                console.log(popup.id, id)
-                return popup.id !== id
+            windows: this.state.windows.filter(Portfolio => {
+                console.log(Portfolio.id, id)
+                return Portfolio.id !== id
             })
         })
     }
 
     render() {
+        const { windows, warning, warningMessage } = this.state
         const value = {
-            windows: this.state.windows,
-            openWindow: this.openWindow,
-            openFolder: this.openFolder
-            // closeWindow: this.closeWindow
+            windows,
+            warning,
+            warningMessage,
+            openPortfolio: this.openPortfolio,
+            openFolder: this.openFolder,
+            hideWarning: this.hideWarning,
+            showWarning: this.showWarning,
+            openPorfolioForm: this.openPorfolioForm
+            // close: this.close
         }
 
         return <Provider value={value}>{this.props.children}</Provider>
     }
 }
 
-export const withPopupContext = Component =>
+export const withwindowContext = Component =>
     class WrapperComponent extends React.Component {
         // static async getInitialProps(args) {
         //     const pageProps =

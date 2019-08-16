@@ -3,5 +3,17 @@
 @import './footer.css';
 @import './menu.css';
 @import './common.css';
-@import './popup.css';
 @import './nav.css';
+@import './folder.css';
+@import './warning.css';
+@import './portfolio.css';
+
+.main {
+    width: 100%;
+    height: 100vh;
+    background: #008081;
+    overflow: hidden;
+    /* background-image: url('/static/images/win-bg.gif');
+    background-repeat: none;
+    background-size: cover; */
+}

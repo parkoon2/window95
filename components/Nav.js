@@ -1,15 +1,27 @@
 import Icon from './Icon'
-import { popupContext } from '../context/windowContext'
+import { windowContext } from '../context/windowContext'
 import { useContext } from 'react'
 
 const Nav = ({ portfolios }) => {
-    const popupCtx = useContext(popupContext)
+    const windowCtx = useContext(windowContext)
 
+    const isAuthenticated = true
+
+    const createPortfolioHandler = () => {
+        if (!isAuthenticated) {
+            windowCtx.showWarning(
+                '관리자만 접근 할 수 있습니다. 관리자로 로그인 해주세요.'
+            )
+            return
+        }
+
+        windowCtx.openPorfolioForm()
+    }
     return (
         <ul className="window__container">
             <li
                 className="item"
-                style={{ top: 0, left: 0 }}
+                style={{ top: 10, left: 0 }}
                 // onDoubleClick={() => handleDoubleClick(icon)}
             >
                 <Icon name="computer" title="About me" />
@@ -23,28 +35,35 @@ const Nav = ({ portfolios }) => {
             </li>
             <li
                 className="item"
-                style={{ top: 200, left: 0 }}
+                style={{ top: 190, left: 0 }}
                 // onDoubleClick={() => handleDoubleClick(icon)}
             >
                 <Icon name="internet" title="The internet" />
             </li>
             <li
                 className="item"
-                style={{ top: 300, left: 0 }}
+                style={{ top: 280, left: 0 }}
                 // onDoubleClick={() => handleDoubleClick(icon)}
             >
                 <Icon name="inbox" title="Contact me" />
             </li>
             <li
                 className="item"
-                style={{ top: 400, left: 0 }}
-                onDoubleClick={popupCtx.openFolder.bind(
+                style={{ top: 370, left: 0 }}
+                onDoubleClick={windowCtx.openFolder.bind(
                     this,
                     'Portfolios',
                     portfolios
                 )}
             >
                 <Icon name="briefcase" title="Portfolios" />
+            </li>
+            <li
+                className="item"
+                style={{ top: 460, left: 0 }}
+                onDoubleClick={createPortfolioHandler}
+            >
+                <Icon name="portfolio-form" title="Create Portfolio" />
             </li>
         </ul>
     )

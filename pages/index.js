@@ -1,11 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react'
-import WindowIcon from '../components/WindowIcon'
 import Icon from '../components/Icon'
-import classnames from 'classnames'
-import Popup from '../components/window/Popup'
-import uuidv1 from 'uuid/v1'
-import { popupContext } from '../context/windowContext'
+import { windowContext } from '../context/windowContext'
 import Nav from '../components/Nav'
+import Warning from '../components/Warning'
 
 // import '../styles/home.css'
 
@@ -68,8 +65,8 @@ const INITIAL_ICONS = [
 ]
 
 const Home = ({ portfolios }) => {
-    const popupCtx = useContext(popupContext)
-    const { openWindow, closeWindow, windows } = popupCtx
+    const windowCtx = useContext(windowContext)
+    const { windows, warning, warningMessage } = windowCtx
 
     const handleDoubleClick = icon => {
         const { type } = icon.detail
@@ -98,13 +95,15 @@ const Home = ({ portfolios }) => {
             <React.Fragment key={index}>{popup.component}</React.Fragment>
         ))
     return (
-        <div className="window">
+        <div className="main">
             {/* <ul className="window__container"> */}
             <Nav portfolios={portfolios} />
             {/* {renderIcons(INITIAL_ICONS)} */}
             {/* {windows && renderWindows(windows)}
             </ul> */}
             {windows && renderWindows(windows)}
+
+            {warning && <Warning message={warningMessage} />}
         </div>
     )
 }
@@ -114,7 +113,7 @@ Home.getInitialProps = () => {
         {
             id: 'id',
             title: 'Portfolio Title',
-            icon: 'programs',
+            icon: 'portfolio',
             body: `Contrary to popular belief, Lorem Ipsum is not
             simply random text. It has roots in a piece of
             classical Latin literature from 45 BC, making it
@@ -125,6 +124,15 @@ Home.getInitialProps = () => {
             going through the cites of the word in classical
             literature, discovered the undoubtable source.`,
             tech: ['Javascript', 'HTML', 'CSS', 'Node.js'],
+            git: 'https://github.com/parkoon',
+            images: ['static/images/landing.jpg']
+        },
+        {
+            id: 'id',
+            title: 'KT 화상 컨설팅',
+            icon: 'portfolio',
+            body: `화상으로 상담 할 수 있는 웹 페이지.`,
+            tech: ['Javascript', 'HTML', 'CSS', 'webrtc'],
             git: 'https://github.com/parkoon',
             images: ['static/images/landing.jpg']
         }

@@ -2,41 +2,9 @@ import Icon from '../Icon'
 import { useEffect, useState } from 'react'
 
 const Header = props => {
-    const { title, onClose, wrapper } = props
+    const { title, onClose, _ref } = props
 
     const [fullscreen, setFullscreen] = useState(false)
-    let isMouseDown = false
-
-    let pos1, pos2, pos3, pos4
-
-    const handleMouseDown = e => {
-        isMouseDown = true
-
-        pos3 = e.clientX
-        pos4 = e.clientY
-
-        // call a function whenever the cursor moves:
-        document.onmousemove = handleMouseMove
-        document.onmouseup = handleMouseUp
-    }
-
-    const handleMouseMove = e => {
-        if (!isMouseDown) return
-
-        pos1 = pos3 - e.clientX
-        pos2 = pos4 - e.clientY
-        pos3 = e.clientX
-        pos4 = e.clientY
-
-        wrapper.current.style.top = wrapper.current.offsetTop - pos2 + 'px'
-        wrapper.current.style.left = wrapper.current.offsetLeft - pos1 + 'px'
-    }
-
-    const handleMouseUp = () => {
-        isMouseDown = false
-        document.onmousemove = null
-        document.onmouseup = null
-    }
 
     const handleResizing = () => {
         if (fullscreen) {
@@ -51,7 +19,8 @@ const Header = props => {
     }
 
     return (
-        <header onMouseDown={handleMouseDown}>
+        <header className="action-header" ref={_ref}>
+            {/* <header className="action-header" onMouseDown={handleMouseDown}> */}
             <span className="title">{title}</span>
             <div className="btns">
                 <div className="btn">

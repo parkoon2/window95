@@ -1,85 +1,41 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useContext } from 'react'
 import Icon from '../Icon'
 import Header from './Header'
 import ActionBar from './ActionBar'
+import { windowContext } from '../../context/windowContext'
+import useDrag from '../../hooks/useDrag'
+import Layout from './Layout'
 
 const Folder = props => {
-    const { title, onClose, x, y, portfolios } = props
+    const { title, onClose, x, y, items } = props
 
-    const wrapperRef = useRef()
-    let isMouseDown = false
+    const windowCtx = useContext(windowContext)
 
-    let pos1, pos2, pos3, pos4
+    // const wrapperRef = useRef()
+    // const targetRef = useRef()
 
-    useEffect(() => {
-        wrapperRef.current.style.zIndex = getIndexOfPopupOnTop()
-    }, [])
+    // useDrag(wrapperRef, targetRef)
 
-    const handleMouseDown = e => {
-        isMouseDown = true
+    const renderItems = items => {
+        if (typeof items === 'array' || items.length === 0) return
 
-        pos3 = e.clientX
-        pos4 = e.clientY
-
-        // call a function whenever the cursor moves:
-        document.onmousemove = handleMouseMove
-        document.onmouseup = handleMouseUp
-    }
-
-    const handleMouseMove = e => {
-        if (!isMouseDown) return
-
-        pos1 = pos3 - e.clientX
-        pos2 = pos4 - e.clientY
-        pos3 = e.clientX
-        pos4 = e.clientY
-
-        wrapperRef.current.style.top =
-            wrapperRef.current.offsetTop - pos2 + 'px'
-        wrapperRef.current.style.left =
-            wrapperRef.current.offsetLeft - pos1 + 'px'
-    }
-
-    const handleMouseUp = () => {
-        isMouseDown = false
-        document.onmousemove = null
-        document.onmouseup = null
-    }
-
-    const getIndexOfPopupOnTop = () =>
-        ++[...document.querySelectorAll('.popup__container')]
-            .map(el => el.style.zIndex * 1) // string to number
-            .sort((a, b) => b - a)[0]
-
-    const moveToTopView = () => {
-        wrapperRef.current.style.zIndex = getIndexOfPopupOnTop()
+        return items.map((item, index) => {
+            return (
+                <li
+                    className="folder"
+                    key={index}
+                    onDoubleClick={windowCtx.openPortfolio.bind(this, item)}
+                >
+                    <Icon name="portfolio" title={item.title} />
+                </li>
+            )
+        })
     }
 
     return (
-        <div
-            // draggable
-            className="popup__container"
-            style={{
-                top: y,
-                left: x
-            }}
-            ref={wrapperRef}
-            onMouseDown={moveToTopView}
-        >
-            <div className="container__frame">
-                <div className="frame__padding">
-                    <Header
-                        wrapper={wrapperRef}
-                        title={title}
-                        onClose={onClose}
-                    />
-                    <ActionBar />
-                    <div className="contents">
-                        <Icon name="briefcase" />
-                    </div>
-                </div>
-            </div>
-        </div>
+        <Layout x={x} y={y} title={title} onClose={onClose}>
+            <ul className="folder__container">{renderItems(items)}</ul>
+        </Layout>
     )
 }
 

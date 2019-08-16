@@ -1,0 +1,7 @@
+.folder__container {
+    display: flex;
+}
+.folder__container .folder {
+    display: inline-block;
+    margin-bottom: 20px;
+}
