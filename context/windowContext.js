@@ -1,6 +1,7 @@
 import React, { createContext } from 'react'
 import uuidv1 from 'uuid/v1'
 import Portfolio from '../components/portfolio/Portfolio'
+import PortForm from '../components/portfolio/PortForm'
 import Folder from '../components/window/Folder'
 
 export const windowContext = createContext()
@@ -37,7 +38,7 @@ export class WindowContextProvider extends React.Component {
                 {
                     id,
                     component: (
-                        <Portfolio
+                        <PortForm
                             onClose={() => this.close(id)}
                             x={100 + windows.length * 20}
                             y={100 + windows.length * 20}

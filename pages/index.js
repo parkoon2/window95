@@ -3,6 +3,7 @@ import Icon from '../components/Icon'
 import { windowContext } from '../context/windowContext'
 import Nav from '../components/Nav'
 import Warning from '../components/Warning'
+import PortForm from '../components/portfolio/PortForm'
 
 const Home = ({ portfolios }) => {
     const windowCtx = useContext(windowContext)
@@ -40,6 +41,7 @@ const Home = ({ portfolios }) => {
             {windows && renderWindows(windows)}
 
             {warning && <Warning message={warningMessage} />}
+            <PortForm />
         </div>
     )
 }

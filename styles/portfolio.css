@@ -25,3 +25,10 @@
 .portfolio__techsheet ul li:last-child {
     margin: 0;
 }
+
+/* ------- portfolio form ------- */
+.portfolio__form {
+    background: lightblue;
+    display: flex;
+    flex-direction: column;
+}
