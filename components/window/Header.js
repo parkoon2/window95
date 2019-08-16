@@ -1,5 +1,5 @@
 import Icon from '../Icon'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const Header = props => {
     const { title, onClose, _ref } = props
@@ -13,14 +13,13 @@ const Header = props => {
             document.querySelector('.contents').style.height = null
         } else {
             setFullscreen(true)
-            wrapper.current.requestFullscreen()
+            document.querySelector('.window__layout').requestFullscreen()
             document.querySelector('.contents').style.height = '100%'
         }
     }
 
     return (
         <header className="action-header" ref={_ref}>
-            {/* <header className="action-header" onMouseDown={handleMouseDown}> */}
             <span className="title">{title}</span>
             <div className="btns">
                 <div className="btn">

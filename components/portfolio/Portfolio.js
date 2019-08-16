@@ -1,8 +1,4 @@
-import React, { useRef, useEffect } from 'react'
-import Icon from '../Icon'
-import Header from '../window/Header'
-import ActionBar from '../window/ActionBar'
-import useDrag from '../../hooks/useDrag'
+import React from 'react'
 import Layout from '../window/Layout'
 
 const renderTech = techs =>

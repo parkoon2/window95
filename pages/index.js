@@ -1,68 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import Icon from '../components/Icon'
 import { windowContext } from '../context/windowContext'
 import Nav from '../components/Nav'
 import Warning from '../components/Warning'
-
-// import '../styles/home.css'
-
-const INITIAL_ICONS = [
-    {
-        name: 'computer',
-        displayName: 'My Computer',
-        pos: {
-            x: 0,
-            y: 0
-        },
-        detail: {
-            type: 'portfolio' // type: recyclebin, aboutme, email, portfolio, internet
-        }
-    },
-    {
-        name: 'recyclebin',
-        displayName: 'Recycle Bin',
-        pos: {
-            x: 0,
-            y: 100
-        },
-        detail: {
-            type: 'portfolio' // type: recyclebin, aboutme, email, portfolio, internet
-        }
-    },
-    {
-        name: 'internet',
-        displayName: 'The internet',
-        pos: {
-            x: 0,
-            y: 200
-        },
-        detail: {
-            type: 'portfolio' // type: recyclebin, aboutme, email, portfolio, internet
-        }
-    },
-    {
-        name: 'briefcase',
-        displayName: 'My Briefcase',
-        pos: {
-            x: 0,
-            y: 300
-        },
-        detail: {
-            type: 'folder' // type: recyclebin, aboutme, email, portfolio, internet, folder
-        }
-    },
-    {
-        name: 'inbox',
-        displayName: 'Inbox',
-        pos: {
-            x: 0,
-            y: 400
-        },
-        detail: {
-            type: 'portfolio' // type: recyclebin, aboutme, email, portfolio, internet
-        }
-    }
-]
 
 const Home = ({ portfolios }) => {
     const windowCtx = useContext(windowContext)
@@ -96,11 +36,7 @@ const Home = ({ portfolios }) => {
         ))
     return (
         <div className="main">
-            {/* <ul className="window__container"> */}
             <Nav portfolios={portfolios} />
-            {/* {renderIcons(INITIAL_ICONS)} */}
-            {/* {windows && renderWindows(windows)}
-            </ul> */}
             {windows && renderWindows(windows)}
 
             {warning && <Warning message={warningMessage} />}

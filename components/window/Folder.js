@@ -1,20 +1,12 @@
 import React, { useRef, useEffect, useContext } from 'react'
 import Icon from '../Icon'
-import Header from './Header'
-import ActionBar from './ActionBar'
 import { windowContext } from '../../context/windowContext'
-import useDrag from '../../hooks/useDrag'
 import Layout from './Layout'
 
 const Folder = props => {
     const { title, onClose, x, y, items } = props
 
     const windowCtx = useContext(windowContext)
-
-    // const wrapperRef = useRef()
-    // const targetRef = useRef()
-
-    // useDrag(wrapperRef, targetRef)
 
     const renderItems = items => {
         if (typeof items === 'array' || items.length === 0) return

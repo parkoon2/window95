@@ -2,7 +2,6 @@ import React, { createContext } from 'react'
 import uuidv1 from 'uuid/v1'
 import Portfolio from '../components/portfolio/Portfolio'
 import Folder from '../components/window/Folder'
-import PortForm from '../components/portfolio/PortForm'
 
 export const windowContext = createContext()
 const { Provider, Consumer } = windowContext

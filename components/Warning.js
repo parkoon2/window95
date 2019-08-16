@@ -1,5 +1,5 @@
 import Icon from './Icon'
-import { useEffect, useContext, useRef } from 'react'
+import { useEffect, useContext } from 'react'
 import { windowContext } from '../context/windowContext'
 
 const Warning = ({ message }) => {
