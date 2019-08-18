@@ -5,10 +5,12 @@ import useFormValidation from '../../hooks/useFormValidation'
 import validate from '../../helpers/validate'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import Icon from '../Icon'
 
 const INITIAL_VALUE = {
     title: '',
     body: '',
+    tech: '',
     techs: [],
     git: '',
     startDate: '',
@@ -24,7 +26,9 @@ const PortForm = () => {
         errors,
         isSubmitting,
         handleStartDateChange,
-        handleEndDateChange
+        handleEndDateChange,
+        handleKeyUp,
+        deleteTag
     } = useFormValidation(INITIAL_VALUE, validate)
 
     return (
@@ -69,11 +73,39 @@ const PortForm = () => {
                 </div>
 
                 <div className="form__tech">
-                    <label>title</label> <input type="text" />
+                    <div className="tech__tags">
+                        <ul>
+                            {values.techs.map((tech, index) => (
+                                <li
+                                    key={index}
+                                    onClick={() => deleteTag(index)}
+                                >
+                                    <u>{tech}</u>
+                                    <Icon name="close" size="s" onCli />
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <label>techs</label>
+                    <input
+                        type="text"
+                        name="tech"
+                        value={values.tech}
+                        onChange={handleChange}
+                        onKeyUp={handleKeyUp}
+                    />
                 </div>
 
                 <div className="form__images">
-                    <label>title</label> <input type="text" />
+                    <label>image</label> <input type="text" />
+                    <form
+                        action="/photos/upload"
+                        method="post"
+                        encType="multipart/form-data"
+                    >
+                        <input type="file" name="photos" />
+                        <input type="submit" />
+                    </form>
                 </div>
 
                 <div className="form__resources">

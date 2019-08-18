@@ -1,6 +1,9 @@
 const next = require('next')
 const express = require('express')
 const nodemailer = require('nodemailer')
+const mkdir = require('mkdirp')
+const path = require('path')
+const fs = require('fs')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const routes = require('../routes')
@@ -10,9 +13,49 @@ const config = require('./config')
 const middlewares = require('./middlewares')
 const { contact } = require('./api')
 
+var multer = require('multer')
+
+const getToday = () => {
+    let today = new Date()
+    const dd = String(today.getDate()).padStart(2, '0')
+    const mm = String(today.getMonth() + 1).padStart(2, '0') //January is 0!
+    const yyyy = today.getFullYear()
+
+    today = `${yyyy}-${mm}-${dd}`
+
+    return today
+}
+
+var portfolio = multer.diskStorage({
+    destination: function(req, file, cb) {
+        let des = path.join(__dirname, `./uploads/portfolio`)
+        let isDirExists = fs.existsSync(des) && fs.lstatSync(des).isDirectory()
+
+        if (!isDirExists) mkdir.sync(des)
+        cb(null, des)
+    },
+    filename: function(req, file, cb) {
+        const savedName = Date.now() + '-' + file.originalname
+        req.savedName = savedName
+        cb(null, savedName)
+    }
+})
+
+var upload = multer({ storage: portfolio })
+
 app.prepare()
     .then(() => {
         const server = express()
+
+        server.use(express.static(path.join(__dirname, 'uploads')))
+
+        try {
+            fs.unlinkSync(
+                path.join(__dirname, './uploads/photos-1566099471716.png')
+            )
+        } catch (err) {
+            console.log(err)
+        }
 
         middlewares(server)
 
@@ -22,11 +65,22 @@ app.prepare()
         //   return app.render(req, res, "/posts/detail", { id: req.params.id });
         // });
 
+        server.post('/photos/upload', upload.array('photos', 12), function(
+            req,
+            res,
+            next
+        ) {
+            // req.files is array of `photos` files
+            // req.body will contain the text fields, if there were any
+
+            res.send(req.savedName)
+        })
+
         let transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'devparkoon@gmail.com', // gmail 계정 아이디를 입력
-                pass: 'Pjh1590^^' // gmail 계정의 비밀번호를 입력
+                // user:
+                // pass:
             }
         })
 

@@ -10,7 +10,8 @@ const useFormValidation = (initialState, validate) => {
             const noErrors = Object.keys(errors).length === 0
 
             if (noErrors) {
-                alert(JSON.stringify(values, null, 2))
+                // delete values.tech
+                console.log(JSON.stringify(values, null, 2))
                 setSubmitting(false)
             } else {
                 setSubmitting(false)
@@ -50,6 +51,27 @@ const useFormValidation = (initialState, validate) => {
         setSubmitting(true)
     }
 
+    const handleKeyUp = e => {
+        const keyCode = e.keyCode
+
+        if (keyCode !== 13) return
+
+        if (e.target.name === 'tech') {
+            setValues({
+                ...values,
+                tech: '',
+                techs: values.techs.concat(e.target.value)
+            })
+        }
+    }
+
+    const deleteTag = key => {
+        setValues({
+            ...values,
+            techs: values.techs.filter((tech, index) => index !== key)
+        })
+    }
+
     return {
         values,
         handleChange,
@@ -58,7 +80,9 @@ const useFormValidation = (initialState, validate) => {
         errors,
         isSubmitting,
         handleStartDateChange,
-        handleEndDateChange
+        handleEndDateChange,
+        handleKeyUp,
+        deleteTag
     }
 }
 
