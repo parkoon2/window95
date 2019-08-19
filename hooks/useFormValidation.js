@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const useFormValidation = (initialState, validate) => {
     const [values, setValues] = useState(initialState)
@@ -10,8 +11,40 @@ const useFormValidation = (initialState, validate) => {
             const noErrors = Object.keys(errors).length === 0
 
             if (noErrors) {
-                // delete values.tech
-                console.log(JSON.stringify(values, null, 2))
+                values.status = values.endDate ? 'completed' : 'progress'
+                alert(JSON.stringify(values, null, 2))
+
+                if (values.photos.length !== 0) {
+                    // 서버로 이미지 업로드를 위한 FormData 생성
+                    const formData = new FormData()
+
+                    values.photos.forEach(photo =>
+                        formData.append('photos', photo.file)
+                    )
+
+                    const filteredValue = Object.assign({}, values)
+                    delete filteredValue.photos
+                    delete filteredValue.tech
+                    formData.append('portfolio', JSON.stringify(filteredValue))
+
+                    axios({
+                        method: 'post',
+                        url: '/api/v1/portfolio',
+                        data: formData
+                        // config: {
+                        //     headers: { 'Content-Type': 'multipart/form-data' }
+                        // }
+                    })
+                        .then(function(response) {
+                            //handle success
+                            console.log('success', response)
+                        })
+                        .catch(function(response) {
+                            //handle error
+                            console.log('failure', response)
+                        })
+                }
+
                 setSubmitting(false)
             } else {
                 setSubmitting(false)
@@ -19,7 +52,41 @@ const useFormValidation = (initialState, validate) => {
         }
     }, [errors])
 
+    const handleFileUpload = file => {
+        const reader = new FileReader()
+
+        reader.readAsDataURL(file)
+        reader.onload = () => {
+            const url = reader.result
+            const name = file.name
+
+            const photo = {
+                id: name + Date.now(),
+                name,
+                url,
+                file
+            }
+            setValues({
+                ...values,
+                photos: values.photos.concat(photo)
+            })
+        }
+    }
+
+    const deleteFile = id => {
+        setValues({
+            ...values,
+            photos: values.photos.filter(photo => photo.id !== id)
+        })
+    }
+
     const handleChange = e => {
+        if (e.target.files && e.target.files[0]) {
+            handleFileUpload(e.target.files[0])
+            e.target.value = ''
+            return
+        }
+
         setValues({
             ...values,
             [e.target.name]: e.target.value
@@ -72,6 +139,13 @@ const useFormValidation = (initialState, validate) => {
         })
     }
 
+    const deleteAllTags = () => {
+        setValues({
+            ...values,
+            techs: []
+        })
+    }
+
     return {
         values,
         handleChange,
@@ -82,7 +156,9 @@ const useFormValidation = (initialState, validate) => {
         handleStartDateChange,
         handleEndDateChange,
         handleKeyUp,
-        deleteTag
+        deleteTag,
+        deleteFile,
+        deleteAllTags
     }
 }
 

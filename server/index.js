@@ -29,6 +29,8 @@ const getToday = () => {
 var portfolio = multer.diskStorage({
     destination: function(req, file, cb) {
         let des = path.join(__dirname, `./uploads/portfolio`)
+
+        console.log('!!!!!!!!!!!!!!!!!!!!', des)
         let isDirExists = fs.existsSync(des) && fs.lstatSync(des).isDirectory()
 
         if (!isDirExists) mkdir.sync(des)
@@ -65,15 +67,24 @@ app.prepare()
         //   return app.render(req, res, "/posts/detail", { id: req.params.id });
         // });
 
-        server.post('/photos/upload', upload.array('photos', 12), function(
+        server.post('/api/v1/portfolio', upload.array('photos', 12), function(
             req,
             res,
             next
         ) {
             // req.files is array of `photos` files
             // req.body will contain the text fields, if there were any
+            // form data ==> req.body & req.files
 
-            res.send(req.savedName)
+            console.log('========= LOG START =======')
+            console.log(req.savedName)
+            console.log('========= LOG END =========')
+
+            console.log('========= LOG START =======')
+            console.log(req)
+            console.log('========= LOG END =========')
+
+            res.json({ filename: req.savedName })
         })
 
         let transporter = nodemailer.createTransport({

@@ -28,7 +28,75 @@
 
 /* ------- portfolio form ------- */
 .portfolio__form {
-    background: lightblue;
-    display: flex;
-    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    /* display: flex;
+    flex-direction: column; */
+}
+.portfolio__form .form__image,
+.portfolio__form .form__text {
+    padding: 10px;
+    user-select: none;
+}
+
+.portfolio__form .form__submit {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.portfolio__form .form__image img {
+    width: 240px;
+}
+
+.portfolio__form .form__image .image__name {
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-bottom: 7px;
+}
+
+.portfolio__form .form__image .image__name:hover {
+    text-decoration: underline;
+}
+
+.portfolio__form .form__text .tech__tags {
+    user-select: none;
+}
+
+.portfolio__form .form__text .tech__tags li {
+    display: inline-block;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+.portfolio__form .form__text .tech__tags li:hover {
+    text-decoration: underline;
+}
+.portfolio__form .form__text .tech__tags .tag__title {
+    margin-right: 2px;
+}
+.portfolio__form .form__image label,
+.portfolio__form .form__text label {
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-right: 7px;
+    width: 52px;
+    font-size: 0.9rem;
+    /* flex: 1; */
+}
+.portfolio__form .form__text textarea,
+.portfolio__form .form__text input {
+    width: 238px;
+    margin-right: 10px;
+}
+
+.portfolio__form .form__text .datepicker {
+    width: 80px;
+}
+
+.portfolio__form .error {
+    color: red;
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-top: 4px;
 }

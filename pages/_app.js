@@ -10,6 +10,7 @@ import '../styles/index.css'
 import Footer from '../components/shared/Footer'
 import { MenuContextProvider } from '../context/menuContext'
 import { WindowContextProvider } from '../context/windowContext'
+import Timer from '../components/Timer'
 // import '../styles/common.css'
 
 // import 'react-toastify/dist/ReactToastify.css'
@@ -19,14 +20,23 @@ class MyApp extends App {
 
         let isLoaded = false
 
-        console.log('Component', Component)
-
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx)
         }
 
         return { pageProps, isLoaded }
     }
+
+    state = {
+        show: true
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({ show: false })
+        }, 3000)
+    }
+    _
 
     renderWindowIfLoaded = () => {
         const { Component, pageProps, isLoaded } = this.props
@@ -49,7 +59,17 @@ class MyApp extends App {
         const { Component, pageProps, isLoaded } = this.props
         return (
             <Container>
-                {this.renderWindowIfLoaded()}
+                {this.state.show && (
+                    <Timer
+                        start={() => {
+                            console.log('timer start')
+                        }}
+                        stop={time => {
+                            console.log('timer stop', time)
+                        }}
+                    />
+                )}
+                {/* {this.renderWindowIfLoaded()} */}
                 {/* <Popup title={'hello1'} /> */}
             </Container>
         )
