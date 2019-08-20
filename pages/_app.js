@@ -27,10 +27,6 @@ class MyApp extends App {
         return { pageProps, isLoaded }
     }
 
-    state = {
-        show: true
-    }
-
     componentDidMount() {
         setTimeout(() => {
             this.setState({ show: false })
@@ -59,17 +55,7 @@ class MyApp extends App {
         const { Component, pageProps, isLoaded } = this.props
         return (
             <Container>
-                {this.state.show && (
-                    <Timer
-                        start={() => {
-                            console.log('timer start')
-                        }}
-                        stop={time => {
-                            console.log('timer stop', time)
-                        }}
-                    />
-                )}
-                {/* {this.renderWindowIfLoaded()} */}
+                {this.renderWindowIfLoaded()}
                 {/* <Popup title={'hello1'} /> */}
             </Container>
         )
