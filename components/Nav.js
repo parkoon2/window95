@@ -4,7 +4,6 @@ import { useContext } from 'react'
 
 const Nav = ({ portfolios }) => {
     const windowCtx = useContext(windowContext)
-
     const isAuthenticated = true
 
     const createPortfolioHandler = () => {
@@ -22,7 +21,7 @@ const Nav = ({ portfolios }) => {
             <li
                 className="item"
                 style={{ top: 10, left: 0 }}
-                // onDoubleClick={() => handleDoubleClick(icon)}
+                onDoubleClick={windowCtx.openAboutMe}
             >
                 <Icon name="computer" title="About me" />
             </li>
@@ -36,7 +35,7 @@ const Nav = ({ portfolios }) => {
             <li
                 className="item"
                 style={{ top: 190, left: 0 }}
-                // onDoubleClick={() => handleDoubleClick(icon)}
+                onDoubleClick={windowCtx.openInternet}
             >
                 <Icon name="internet" title="The internet" />
             </li>

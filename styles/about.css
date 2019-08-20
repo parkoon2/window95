@@ -1,0 +1,97 @@
+.about__container {
+    position: relative;
+}
+
+.about__btns {
+    position: absolute;
+    bottom: 16px;
+    right: 8px;
+}
+
+.about__container input[type='radio'] {
+    display: none;
+}
+
+.about__container input[type='radio'] + label {
+    display: inline-block;
+    padding: 5px;
+    background: #c1c1c1;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 5px 5px 0px 0px;
+    border-right: 1px solid #000;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+}
+.about__container input[type='radio']:nth-child(1) + label {
+}
+
+.about__container input[type='radio']:checked + label {
+    /* padding-bottom: px; */
+    position: relative;
+    padding-top: 10px;
+    border-bottom: 1px solid #c1c1c1;
+    z-index: 9999;
+    /* position: absolute; */
+}
+
+.about__container .contents__box {
+    position: absolute;
+    top: 28px;
+    padding: 27px;
+    box-sizing: border-box;
+    width: 522px;
+    height: 345px;
+    background: #c1c1c1;
+    display: none;
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    border-top: 1px solid #fff;
+}
+
+.about__container #tab01:checked ~ .box--1 {
+    display: block;
+}
+.about__container #tab02:checked ~ .box--2 {
+    display: block;
+}
+.about__container #tab03:checked ~ .box--3 {
+    display: block;
+}
+
+.contents__box .flexbox {
+    display: flex;
+    justify-content: space-around;
+}
+
+.contents__box .flexbox .contents__image {
+    position: relative;
+    flex: 2;
+}
+
+.contents__box .flexbox .contents__image .avatar {
+    width: 190px;
+}
+.contents__box .flexbox .contents__image .logo {
+    position: absolute;
+}
+
+.contents__box .flexbox .contents__body {
+    flex: 3;
+    margin-left: 52px;
+}
+.contents__box .flexbox .contents__body .body__row {
+}
+.contents__box .flexbox .contents__body .body__row .row__title {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+.contents__box .flexbox .contents__body .body__row ul {
+    padding-left: 27px;
+    margin-bottom: 27px;
+}
+.contents__box .flexbox .contents__body .body__row ul li {
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+}

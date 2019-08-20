@@ -10,7 +10,6 @@ import '../styles/index.css'
 import Footer from '../components/shared/Footer'
 import { MenuContextProvider } from '../context/menuContext'
 import { WindowContextProvider } from '../context/windowContext'
-import Timer from '../components/Timer'
 // import '../styles/common.css'
 
 // import 'react-toastify/dist/ReactToastify.css'

@@ -41,7 +41,6 @@ const Home = ({ portfolios }) => {
             {windows && renderWindows(windows)}
 
             {warning && <Warning message={warningMessage} />}
-            <PortForm />
         </div>
     )
 }

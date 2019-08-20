@@ -27,6 +27,9 @@
     background: lightgray;
     margin: 27px auto;
 }
+i {
+    font-style: italic;
+}
 
 /* ------- button ------- */
 
@@ -38,9 +41,10 @@
     cursor: pointer;
     border-top: 1px solid gray;
     border-left: 1px solid gray;
-    border-bottom: 2px solid #000;
-    border-right: 2px solid #000;
-    margin-right: 10px;
+    margin-right: 7px;
+    box-shadow: 1px 1px 1px #000;
+    min-width: 75px;
+    text-align: center;
 }
 
 .btn__container .btn--dotted {

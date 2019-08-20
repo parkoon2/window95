@@ -32,7 +32,8 @@
     /* overflow: hidden; */
     overflow: auto;
     width: 100%;
-    height: 581px;
+    height: calc(100% - 42px);
+    /* height: 581px; */
     padding: 10px;
     background: #fff;
     box-sizing: border-box;

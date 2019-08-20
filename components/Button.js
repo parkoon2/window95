@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 const Button = ({ onClick, title, disabled }) => {
     const addUnderline = str => {
         return (
@@ -20,6 +22,11 @@ const Button = ({ onClick, title, disabled }) => {
             <div className="btn__title">{addUnderline(title)}</div>
         </div>
     )
+}
+
+Button.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired
 }
 
 export default Button

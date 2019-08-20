@@ -1,12 +1,12 @@
 import Layout from '../window/Layout'
-import Header from '../window/Header'
-import ActionBar from '../window/ActionBar'
 import useFormValidation from '../../hooks/useFormValidation'
 import validate from '../../helpers/validate'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import Icon from '../Icon'
 import Button from '../Button'
+import { useContext } from 'react'
+import { windowContext } from '../../context/windowContext'
 const INITIAL_VALUE = {
     title: '',
     body: '',
@@ -18,7 +18,7 @@ const INITIAL_VALUE = {
     photos: []
 }
 
-const PortForm = () => {
+const PortForm = ({ onClose, x, y }) => {
     const {
         values,
         handleChange,
@@ -34,8 +34,10 @@ const PortForm = () => {
         deleteAllTags
     } = useFormValidation(INITIAL_VALUE, validate)
 
+    const windowCtx = useContext(windowContext)
+
     return (
-        <Layout>
+        <Layout onClose={onClose} x={x} y={y}>
             <div className="portfolio__form">
                 <div className="form__text">
                     <label>title: </label>
@@ -154,7 +156,11 @@ const PortForm = () => {
                         className="submit__ok"
                         onClick={handleSubmit}
                     />
-                    <Button title="cancel" className="submit__cancel" />
+                    <Button
+                        onClick={onClose}
+                        title="cancel"
+                        className="submit__cancel"
+                    />
                 </div>
             </div>
         </Layout>

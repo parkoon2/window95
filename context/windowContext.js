@@ -3,6 +3,8 @@ import uuidv1 from 'uuid/v1'
 import Portfolio from '../components/portfolio/Portfolio'
 import PortForm from '../components/portfolio/PortForm'
 import Folder from '../components/window/Folder'
+import About from '../components/about/Aboout'
+import Google from '../components/internet/Google'
 
 export const windowContext = createContext()
 const { Provider, Consumer } = windowContext
@@ -39,6 +41,46 @@ export class WindowContextProvider extends React.Component {
                     id,
                     component: (
                         <PortForm
+                            onClose={() => this.close(id)}
+                            x={100 + windows.length * 20}
+                            y={100 + windows.length * 20}
+                        />
+                    )
+                }
+            ]
+        })
+    }
+    openInternet = () => {
+        const id = uuidv1()
+        const { windows } = this.state
+
+        this.setState({
+            windows: [
+                ...windows,
+                {
+                    id,
+                    component: (
+                        <Google
+                            onClose={() => this.close(id)}
+                            x={100 + windows.length * 20}
+                            y={100 + windows.length * 20}
+                        />
+                    )
+                }
+            ]
+        })
+    }
+    openAboutMe = () => {
+        const id = uuidv1()
+        const { windows } = this.state
+
+        this.setState({
+            windows: [
+                ...windows,
+                {
+                    id,
+                    component: (
+                        <About
                             onClose={() => this.close(id)}
                             x={100 + windows.length * 20}
                             y={100 + windows.length * 20}
@@ -113,7 +155,9 @@ export class WindowContextProvider extends React.Component {
             openFolder: this.openFolder,
             hideWarning: this.hideWarning,
             showWarning: this.showWarning,
-            openPorfolioForm: this.openPorfolioForm
+            openPorfolioForm: this.openPorfolioForm,
+            openAboutMe: this.openAboutMe,
+            openInternet: this.openInternet
             // close: this.close
         }
 
