@@ -8,6 +8,8 @@
 @import './warning.css';
 @import './portfolio.css';
 @import './about.css';
+@import './internet.css';
+@import './contact.css';
 
 .main {
     width: 100%;

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-const Button = ({ onClick, title, disabled }) => {
+const Button = ({ onClick, title, name, disabled }) => {
     const addUnderline = str => {
         return (
             <span>
@@ -11,16 +11,17 @@ const Button = ({ onClick, title, disabled }) => {
     }
 
     return (
-        <div
+        <button
             className="btn__container"
             onClick={() => {
                 if (disabled) return
 
                 onClick()
             }}
+            name={name}
         >
             <div className="btn__title">{addUnderline(title)}</div>
-        </div>
+        </button>
     )
 }
 

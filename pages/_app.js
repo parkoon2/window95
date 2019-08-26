@@ -2,6 +2,7 @@ import React from 'react'
 import App, { Container } from 'next/app'
 import BaseLayout from '../components/layout/BaseLayout'
 import Loading from '../components/Loading'
+import Google from '../components/internet/Google'
 
 // import '../styles/main.scss'
 
@@ -56,6 +57,7 @@ class MyApp extends App {
             <Container>
                 {this.renderWindowIfLoaded()}
                 {/* <Popup title={'hello1'} /> */}
+                <Google onClose={() => {}} x={100} y={100} />
             </Container>
         )
     }

@@ -1,0 +1,50 @@
+.internet__container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.internet__container .internet__title {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
+
+.internet__container .internet__title span:nth-child(1) {
+    color: #c0392b;
+}
+.internet__container .internet__title span:nth-child(2) {
+    color: #2980b9;
+}
+.internet__container .internet__title span:nth-child(3) {
+    color: #f1c40f;
+}
+.internet__container .internet__title span:nth-child(4) {
+    color: #27ae60;
+}
+.internet__container .internet__title span:nth-child(5) {
+    color: #c0392b;
+}
+.internet__container .internet__title span:nth-child(6) {
+    color: #f1c40f;
+}
+.internet__container .internet__title span:nth-child(7) {
+    color: #2980b9;
+}
+
+.internet__container .internet__btns {
+    text-align: center;
+}
+.internet__container .internet__subtitle {
+}
+
+.internet__container form input {
+    width: 320px;
+}
+
+.internet__container .internet__copyright {
+    font-style: italic;
+    margin-top: 3rem;
+}
