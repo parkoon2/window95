@@ -11,6 +11,7 @@ import '../styles/index.css'
 import Footer from '../components/shared/Footer'
 import { MenuContextProvider } from '../context/menuContext'
 import { WindowContextProvider } from '../context/windowContext'
+import ContactForm from '../components/contact/ContactForm'
 // import '../styles/common.css'
 
 // import 'react-toastify/dist/ReactToastify.css'
@@ -57,7 +58,7 @@ class MyApp extends App {
             <Container>
                 {this.renderWindowIfLoaded()}
                 {/* <Popup title={'hello1'} /> */}
-                <Google onClose={() => {}} x={100} y={100} />
+                <ContactForm onClose={() => {}} x={100} y={100} />
             </Container>
         )
     }

@@ -1,0 +1,20 @@
+.contact__container {
+}
+
+.contact__container .contact__field span {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.contact__container .contact__field .flex--col {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+.contact__container .contact__field textarea,
+.contact__container .contact__field input {
+    width: 320px;
+}
+
+.contact__container .contact__field .field__submit {
+}
