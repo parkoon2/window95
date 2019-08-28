@@ -20,7 +20,7 @@ const handleError = err => {
 const handleSuccess = res => res.data
 
 /** ----------------- Email  ----------------- */
-export const fetchContact = async body => {
+export const fetchContact = body => {
     return axiosInstance
         .post('/contact', body)
         .then(handleSuccess)

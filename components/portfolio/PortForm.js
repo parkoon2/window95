@@ -1,6 +1,6 @@
 import Layout from '../window/Layout'
 import useFormValidation from '../../hooks/useFormValidation'
-import validate from '../../helpers/validate'
+import { portfolioValidator } from '../../helpers/validate'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import Icon from '../Icon'
@@ -32,7 +32,7 @@ const PortForm = ({ onClose, x, y }) => {
         deleteTag,
         deleteFile,
         deleteAllTags
-    } = useFormValidation(INITIAL_VALUE, validate)
+    } = useFormValidation(INITIAL_VALUE, portfolioValidator)
 
     const windowCtx = useContext(windowContext)
 

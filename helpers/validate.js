@@ -1,4 +1,4 @@
-export default function validate(values) {
+export const portfolioValidator = values => {
     let errors = {}
     if (!values.title) {
         errors.title = 'title is required'
@@ -8,22 +8,31 @@ export default function validate(values) {
         errors.body = 'body is required'
     }
 
-    if (values.techs.length === 0) {
+    if (values.techs && values.techs.length === 0) {
         errors.tech = 'tech is required at least one'
     }
 
-    values.photos.forEach(photo => {
-        if (
-            !/([a-zA-Z0-9\s_\\.\-\(\):])+(.jpeg|.png|.gif)$/i.test(photo.name)
-        ) {
-            errors.photo = 'only image available'
-        }
-    })
+    values.photos &&
+        values.photos.forEach(photo => {
+            if (
+                !/([a-zA-Z0-9\s_\\.\-\(\):])+(.jpeg|.png|.gif)$/i.test(
+                    photo.name
+                )
+            ) {
+                errors.photo = 'only image available'
+            }
+        })
 
     if (!values.startDate) {
         errors.startDate = 'start date is required'
     }
 
     console.log(errors)
+    return errors
+}
+
+export const contactValidator = values => {
+    let errors = {}
+
     return errors
 }
