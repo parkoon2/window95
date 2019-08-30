@@ -1,10 +1,11 @@
 import Layout from '../window/Layout'
 import Icon from '../Icon'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Button from '../Button'
 import useFormValidation from '../../hooks/useFormValidation'
 import { contactValidator } from '../../helpers/validate'
 import { fetchContact } from '../../actions'
+import { toastContext } from '../../context/toastContext'
 
 const INITIAL_VALUE = {
     name: '',
@@ -20,21 +21,28 @@ const ContactForm = ({ x, y, onClose }) => {
         contactValidator
     )
 
-    const handleSumbit = async values => {
+    const toastCtx = useContext(toastContext)
+
+    const sendEmail = async values => {
         alert(JSON.stringify(values, null, 2))
         try {
             const res = await fetchContact(values)
-            console.log(res)
+            toastCtx.addToast('메일이 정상적으로 전송 되었습니다')
+            toastCtx.addToast(
+                '메일이 전송되지 않았습니다. 다시 한 번 시도해주세요'
+            )
         } catch (err) {
             console.error(err)
         }
     }
     return (
-        <Layout x={x} y={y} onClose={onClose} width="352px" height="480px">
+        <Layout x={x} y={y} onClose={onClose} width="352px" height="510px">
             <div className="contact__container">
                 <div className="contact__field">
                     <div className="field__name flex--col">
-                        <span>YOUR NAME (required)</span>
+                        <span>
+                            이름 <span className="required">*</span>
+                        </span>
                         <input
                             name="name"
                             type="text"
@@ -42,9 +50,12 @@ const ContactForm = ({ x, y, onClose }) => {
                             onBlur={handleBlur}
                             onChange={handleChange}
                         ></input>
+                        <span className="name__error error">{errors.name}</span>
                     </div>
                     <div className="field__email flex--col">
-                        <span>YOUR EMAIL (required)</span>
+                        <span>
+                            이메일 <span className="required">*</span>
+                        </span>
                         <input
                             name="email"
                             type="text"
@@ -52,9 +63,12 @@ const ContactForm = ({ x, y, onClose }) => {
                             onBlur={handleBlur}
                             onChange={handleChange}
                         ></input>
+                        <span className="name__error error">
+                            {errors.email}
+                        </span>
                     </div>
                     <div className="field__subject flex--col">
-                        <span>SUBJECT</span>
+                        <span>제목</span>
                         <input
                             name="subject"
                             type="text"
@@ -64,7 +78,7 @@ const ContactForm = ({ x, y, onClose }) => {
                         ></input>
                     </div>
                     <div className="field__message flex--col">
-                        <span>YOUR MESSAGE</span>
+                        <span>내용</span>
                         <textarea
                             name="message"
                             rows={12}
@@ -75,10 +89,10 @@ const ContactForm = ({ x, y, onClose }) => {
                     </div>
                     <div className="field__submit">
                         <Button
-                            title="Send"
+                            title="보내기"
                             onClick={() => {
                                 if (Object.keys(errors).length === 0) {
-                                    handleSumbit(values)
+                                    sendEmail(values)
                                 }
                             }}
                         />

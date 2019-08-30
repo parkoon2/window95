@@ -1,0 +1,27 @@
+.toast__container {
+    display: flex;
+    align-items: center;
+    padding-left: 17px;
+    width: 415px;
+    height: 77px;
+    position: absolute;
+    background: #c1c1c1;
+    box-sizing: border-box;
+    user-select: none;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+}
+
+.toast__container .toast__message {
+    margin-left: 4px;
+    font-size: 0.9rem;
+}
+.toast__container .toast__close {
+    margin-left: 4px;
+    font-size: 0.9rem;
+    position: absolute;
+    right: 4px;
+    top: 2px;
+}

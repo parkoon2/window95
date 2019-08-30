@@ -6,6 +6,10 @@
     margin-bottom: 4px;
 }
 
+.contact__container .contact__field .required {
+    color: red;
+}
+
 .contact__container .contact__field .flex--col {
     display: flex;
     flex-direction: column;
@@ -14,6 +18,16 @@
 .contact__container .contact__field textarea,
 .contact__container .contact__field input {
     width: 320px;
+    font-size: 0.9rem;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.contact__container .contact__field .error {
+    color: red;
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-top: 4px;
 }
 
 .contact__container .contact__field .field__submit {

@@ -34,5 +34,19 @@ export const portfolioValidator = values => {
 export const contactValidator = values => {
     let errors = {}
 
+    if (!values.name) {
+        errors.name = '이름을 입력해 주세요'
+    }
+
+    if (!values.email) {
+        errors.email = '이메일을 입력해 주세요'
+    } else if (
+        !/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            values.email
+        )
+    ) {
+        errors.email = '유효하지 않은 이메일 형식입니다.'
+    }
+
     return errors
 }

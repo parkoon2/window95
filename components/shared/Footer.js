@@ -1,11 +1,26 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import classnames from 'classnames'
 import Menu from '../Menu'
 import { withMenuContext, menuContext } from '../../context/menuContext'
+import { formatAMPM } from '../../helpers/utils'
 
 // import '../../styles/footer.css'
 const Footer = props => {
     const menu = useContext(menuContext)
+
+    const [time, settime] = useState(formatAMPM(new Date()))
+
+    let timer = null
+
+    useEffect(() => {
+        timer = setInterval(() => {}, 1000)
+
+        return () => {
+            cleanup
+        }
+    }, [])
+
+    const updateTimer = () => {}
 
     return (
         <>
@@ -40,7 +55,8 @@ const Footer = props => {
                         <img src="static/icons/sound.ico" />
                     </div>
                     <span className="time">
-                        10:24 <span>PM</span>
+                        {time}
+                        {/* 10:24 <span>PM</span> */}
                     </span>
                 </div>
             </div>

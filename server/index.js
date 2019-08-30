@@ -1,6 +1,5 @@
 const next = require('next')
 const express = require('express')
-const nodemailer = require('nodemailer')
 const mkdir = require('mkdirp')
 const path = require('path')
 const fs = require('fs')
@@ -12,6 +11,8 @@ const handle = routes.getRequestHandler(app)
 const config = require('./config')
 const middlewares = require('./middlewares')
 const { contact } = require('./api')
+
+require('dotenv').config()
 
 var multer = require('multer')
 
@@ -86,29 +87,6 @@ app.prepare()
 
             res.json({ filename: req.savedName })
         })
-
-        let transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                // user:
-                // pass:
-            }
-        })
-
-        let mailOptions = {
-            from: '감사합니다 👻', // sender address
-            to: 'parkoon 👻<devparkoon@gmail.com>', // list of receivers
-            subject: 'Sending Email using Node.js', // 제목
-            text: 'That was easy!' // 내용
-        }
-
-        // transporter.sendMail(mailOptions, function(error, info) {
-        //     if (error) {
-        //         console.log(error)
-        //     } else {
-        //         console.log('Email sent: ' + info.response)
-        //     }
-        // })
 
         server.use(handle).listen(config.PORT, err => {
             if (err) throw err
