@@ -8,19 +8,26 @@ import { formatAMPM } from '../../helpers/utils'
 const Footer = props => {
     const menu = useContext(menuContext)
 
-    const [time, settime] = useState(formatAMPM(new Date()))
+    const [time, setTime] = useState(formatAMPM(new Date()))
 
     let timer = null
 
     useEffect(() => {
-        timer = setInterval(() => {}, 1000)
+        updateTimer()
 
         return () => {
-            cleanup
+            removeTimer()
         }
     }, [])
 
-    const updateTimer = () => {}
+    const updateTimer = () => {
+        timer = setInterval(() => {
+            setTime(formatAMPM(new Date()))
+        }, 1000)
+    }
+    const removeTimer = () => {
+        if (timer) clearInterval(timer)
+    }
 
     return (
         <>
