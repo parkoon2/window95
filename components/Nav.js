@@ -23,28 +23,28 @@ const Nav = ({ portfolios }) => {
                 style={{ top: 10, left: 0 }}
                 onDoubleClick={windowCtx.openAboutMe}
             >
-                <Icon name="computer" title="About me" />
+                <Icon name="computer" title="내 컴퓨터" />
             </li>
             <li
                 className="item"
                 style={{ top: 100, left: 0 }}
                 // onDoubleClick={() => handleDoubleClick(icon)}
             >
-                <Icon name="recyclebin" title="Recycle Bin" />
+                <Icon name="recyclebin" title="휴지통" />
             </li>
             <li
                 className="item"
                 style={{ top: 190, left: 0 }}
                 onDoubleClick={windowCtx.openInternet}
             >
-                <Icon name="internet" title="The internet" />
+                <Icon name="internet" title="인터넷" />
             </li>
             <li
                 className="item"
                 style={{ top: 280, left: 0 }}
                 onDoubleClick={windowCtx.openContact}
             >
-                <Icon name="inbox" title="Contact me" />
+                <Icon name="inbox" title="편지쓰기" />
             </li>
             <li
                 className="item"
@@ -55,14 +55,14 @@ const Nav = ({ portfolios }) => {
                     portfolios
                 )}
             >
-                <Icon name="briefcase" title="Portfolios" />
+                <Icon name="briefcase" title="포트폴리오" />
             </li>
             <li
                 className="item"
                 style={{ top: 460, left: 0 }}
                 onDoubleClick={createPortfolioHandler}
             >
-                <Icon name="portfolio-form" title="Create Portfolio" />
+                <Icon name="portfolio-form" title="문서작성" />
             </li>
         </ul>
     )
