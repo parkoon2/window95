@@ -42,7 +42,7 @@ const Nav = ({ portfolios }) => {
             <li
                 className="item"
                 style={{ top: 280, left: 0 }}
-                // onDoubleClick={() => handleDoubleClick(icon)}
+                onDoubleClick={windowCtx.openContact}
             >
                 <Icon name="inbox" title="Contact me" />
             </li>

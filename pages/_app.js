@@ -49,8 +49,6 @@ class MyApp extends App {
                             <Component {...pageProps} />
                             <Footer />
                             <ToastPopup />
-
-                            <ContactForm onClose={() => {}} x={100} y={100} />
                         </MenuContextProvider>
                     </WindowContextProvider>
                 </ToastProvider>

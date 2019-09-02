@@ -5,6 +5,7 @@ import PortForm from '../components/portfolio/PortForm'
 import Folder from '../components/window/Folder'
 import About from '../components/about/Aboout'
 import Google from '../components/internet/Google'
+import ContactForm from '../components/contact/ContactForm'
 
 export const windowContext = createContext()
 const { Provider, Consumer } = windowContext
@@ -42,7 +43,7 @@ export class WindowContextProvider extends React.Component {
                     component: (
                         <PortForm
                             onClose={() => this.close(id)}
-                            x={100 + windows.length * 20}
+                            x={333 + windows.length * 20}
                             y={100 + windows.length * 20}
                         />
                     )
@@ -62,7 +63,7 @@ export class WindowContextProvider extends React.Component {
                     component: (
                         <Google
                             onClose={() => this.close(id)}
-                            x={100 + windows.length * 20}
+                            x={333 + windows.length * 20}
                             y={100 + windows.length * 20}
                         />
                     )
@@ -82,7 +83,7 @@ export class WindowContextProvider extends React.Component {
                     component: (
                         <About
                             onClose={() => this.close(id)}
-                            x={100 + windows.length * 20}
+                            x={333 + windows.length * 20}
                             y={100 + windows.length * 20}
                         />
                     )
@@ -105,7 +106,7 @@ export class WindowContextProvider extends React.Component {
                             title={title}
                             items={items}
                             onClose={() => this.close(id)}
-                            x={100 + windows.length * 20}
+                            x={333 + windows.length * 20}
                             y={100 + windows.length * 20}
                         />
                     )
@@ -127,7 +128,28 @@ export class WindowContextProvider extends React.Component {
                         <Portfolio
                             detail={detail}
                             onClose={() => this.close(id)}
-                            x={100 + windows.length * 20}
+                            x={333 + windows.length * 20}
+                            y={100 + windows.length * 20}
+                        />
+                    )
+                }
+            ]
+        })
+    }
+    openContact = () => {
+        const id = uuidv1()
+        const { windows } = this.state
+
+        this.setState({
+            windows: [
+                ...windows,
+                {
+                    id,
+                    component: (
+                        <ContactForm
+                            title="메일"
+                            onClose={() => this.close(id)}
+                            x={333 + windows.length * 20}
                             y={100 + windows.length * 20}
                         />
                     )
@@ -157,7 +179,8 @@ export class WindowContextProvider extends React.Component {
             showWarning: this.showWarning,
             openPorfolioForm: this.openPorfolioForm,
             openAboutMe: this.openAboutMe,
-            openInternet: this.openInternet
+            openInternet: this.openInternet,
+            openContact: this.openContact
             // close: this.close
         }
 

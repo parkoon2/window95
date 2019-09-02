@@ -15,7 +15,7 @@ const INITIAL_VALUE = {
 }
 
 // https://www.google.com/search?rlz=1C1GCEU_koKR848KR848&biw=1366&bih=657&tbm=isch&sa=1&ei=WpJjXbSQN9GImAWbhor4Ag&q=window+95+send+mail&oq=window+95+send+mail&gs_l=img.3...69607.72020..72244...0.0..0.159.1658.0j13......0....1..gws-wiz-img.......35i39j0j0i30j0i10i30j0i8i30j0i24.OcYwUrkc8cI&ved=0ahUKEwi0pc6_iaDkAhVRBKYKHRuDAi8Q4dUDCAY&uact=5#imgrc=sknvPiMfnALjaM:
-const ContactForm = ({ x, y, onClose }) => {
+const ContactForm = ({ x, y, onClose, title }) => {
     const { handleBlur, values, handleChange, errors } = useFormValidation(
         INITIAL_VALUE,
         contactValidator
@@ -36,7 +36,14 @@ const ContactForm = ({ x, y, onClose }) => {
         }
     }
     return (
-        <Layout x={x} y={y} onClose={onClose} width="352px" height="510px">
+        <Layout
+            title={title}
+            x={x}
+            y={y}
+            onClose={onClose}
+            width="352px"
+            height="515px"
+        >
             <div className="contact__container">
                 <div className="contact__field">
                     <div className="field__name flex--col">
