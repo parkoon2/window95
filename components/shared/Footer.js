@@ -2,7 +2,8 @@ import React, { useState, useContext, useEffect } from 'react'
 import classnames from 'classnames'
 import Menu from '../Menu'
 import { withMenuContext, menuContext } from '../../context/menuContext'
-import { formatAMPM } from '../../helpers/utils'
+import { formatAMPM, openNewWindow } from '../../helpers/utils'
+import Icon from '../Icon'
 
 // import '../../styles/footer.css'
 const Footer = props => {
@@ -44,7 +45,34 @@ const Footer = props => {
                 <div className="task-bar">
                     <div className="vertical" />
                     <div className="vertical shadow" />
-                    <div>
+                    <div
+                        className="task-bar__icon"
+                        onClick={openNewWindow.bind(
+                            this,
+                            'https://github.com/parkoon'
+                        )}
+                    >
+                        <Icon name="github-2" size="m"></Icon>
+                    </div>
+                    <div
+                        className="task-bar__icon"
+                        onClick={openNewWindow.bind(
+                            this,
+                            'https://devparkoon.tistory.com'
+                        )}
+                    >
+                        <Icon name="blog" size="m"></Icon>
+                    </div>
+                    <div
+                        className="task-bar__icon"
+                        onClick={openNewWindow.bind(
+                            this,
+                            'https://youtube.com'
+                        )}
+                    >
+                        <Icon name="youtube" size="m"></Icon>
+                    </div>
+                    {/* <div>
                         <img src="static/icons/search.png" />
                     </div>
                     <div>
@@ -52,7 +80,7 @@ const Footer = props => {
                     </div>
                     <div>
                         <img src="static/icons/search.png" />
-                    </div>
+                    </div> */}
                     <div className="vertical" />
                     <div className="vertical shadow" />
                 </div>

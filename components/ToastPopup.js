@@ -24,20 +24,6 @@ const ToastPopup = () => {
         ))
     }
 
-    return (
-        <>
-            <button
-                onClick={() => {
-                    toastCtx.addToast(
-                        '메일이 전송되지 않았습니다. 다시 한 번 시도해주세요.'
-                    )
-                }}
-            >
-                ++++
-            </button>
-
-            {renderToastPopups(toastCtx.toasts)}
-        </>
-    )
+    return <>{renderToastPopups(toastCtx.toasts)}</>
 }
 export default ToastPopup

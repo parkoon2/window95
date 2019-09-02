@@ -60,9 +60,9 @@
     align-items: center;
 }
 
-.footer .task-bar div {
+.footer .task-bar .task-bar__icon {
     /* padding: 2px; */
-    margin-right: 1px;
+    margin: 0px 4px;
 }
 .footer .task-bar div:last-child {
     margin-right: 0;

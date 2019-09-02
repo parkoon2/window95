@@ -5,6 +5,10 @@ export const dotdotdot = (text, maxLength = 96) => {
     return text
 }
 
+export const openNewWindow = url => {
+    window.open(url, '_blank')
+}
+
 export const formatAMPM = date => {
     let hours = date.getHours()
     let minutes = date.getMinutes()
