@@ -2,7 +2,7 @@ import Layout from '../window/Layout'
 import Button from '../Button'
 import SpecLogo from './SpecLogo'
 import { useState } from 'react'
-const About = ({ onClose, x, y }) => {
+const About = ({ onClose, x, y, title }) => {
     const [currentTab, setCurrentTab] = useState('tab01')
 
     const handleTabChange = e => {
@@ -12,7 +12,7 @@ const About = ({ onClose, x, y }) => {
     return (
         <Layout
             noActionbar={true}
-            title="About me"
+            title={title}
             onClose={onClose}
             x={x}
             y={y}

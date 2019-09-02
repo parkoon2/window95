@@ -3,7 +3,7 @@ import Button from '../Button'
 import axios from 'axios'
 import { useState, useRef } from 'react'
 
-const Google = ({ x, y, onClose }) => {
+const Google = ({ x, y, onClose, title }) => {
     const [searchValue, setSearchValue] = useState('')
 
     const nomalSearchRef = useRef()
@@ -19,7 +19,7 @@ const Google = ({ x, y, onClose }) => {
             x={x}
             y={y}
             onClose={onClose}
-            title="Internet"
+            title={title}
             noActionbar={true}
             width="670px"
             height="480px"

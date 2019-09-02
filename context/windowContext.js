@@ -42,6 +42,7 @@ export class WindowContextProvider extends React.Component {
                     id,
                     component: (
                         <PortForm
+                            title="문서작성"
                             onClose={() => this.close(id)}
                             x={333 + windows.length * 20}
                             y={100 + windows.length * 20}
@@ -62,6 +63,7 @@ export class WindowContextProvider extends React.Component {
                     id,
                     component: (
                         <Google
+                            title="인터넷"
                             onClose={() => this.close(id)}
                             x={333 + windows.length * 20}
                             y={100 + windows.length * 20}
@@ -82,6 +84,7 @@ export class WindowContextProvider extends React.Component {
                     id,
                     component: (
                         <About
+                            title="내 컴퓨터"
                             onClose={() => this.close(id)}
                             x={333 + windows.length * 20}
                             y={100 + windows.length * 20}
@@ -147,7 +150,7 @@ export class WindowContextProvider extends React.Component {
                     id,
                     component: (
                         <ContactForm
-                            title="메일"
+                            title="편지쓰기"
                             onClose={() => this.close(id)}
                             x={333 + windows.length * 20}
                             y={100 + windows.length * 20}

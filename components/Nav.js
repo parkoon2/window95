@@ -51,7 +51,7 @@ const Nav = ({ portfolios }) => {
                 style={{ top: 370, left: 0 }}
                 onDoubleClick={windowCtx.openFolder.bind(
                     this,
-                    'Portfolios',
+                    '포트폴리오',
                     portfolios
                 )}
             >

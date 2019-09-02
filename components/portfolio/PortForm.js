@@ -18,7 +18,7 @@ const INITIAL_VALUE = {
     photos: []
 }
 
-const PortForm = ({ onClose, x, y }) => {
+const PortForm = ({ onClose, x, y, title }) => {
     const {
         values,
         handleChange,
@@ -37,7 +37,7 @@ const PortForm = ({ onClose, x, y }) => {
     const windowCtx = useContext(windowContext)
 
     return (
-        <Layout onClose={onClose} x={x} y={y}>
+        <Layout onClose={onClose} x={x} y={y} title={title}>
             <div className="portfolio__form">
                 <div className="form__text">
                     <label>title: </label>
