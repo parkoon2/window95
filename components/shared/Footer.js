@@ -38,8 +38,8 @@ const Footer = props => {
                     className={classnames('start', { pressed: menu.active })}
                     onClick={menu.toggle}
                 >
-                    <img src="static/icons/start.png" className="start__icon" />
-                    <div className="start__title active">Start</div>
+                    <Icon name="start" size="m"></Icon>
+                    <div className="start__title active">시작</div>
                 </div>
 
                 <div className="task-bar">

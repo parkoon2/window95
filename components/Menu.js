@@ -23,48 +23,48 @@ const Menu = () => {
                     <li>
                         <Icon name="programs" />
                         <span>
-                            <u>P</u>rograms
+                            <u>프</u>로그램
                         </span>
                         <div className="right-arrow" />
                     </li>
                     <li>
                         <Icon name="documents" />
                         <span>
-                            <u>D</u>cuments
+                            <u>문</u>서
                         </span>
                         <div className="right-arrow" />
                     </li>
                     <li>
                         <Icon name="settings" />
                         <span>
-                            <u>S</u>ettings
+                            <u>설</u>정
                         </span>
                         <div className="right-arrow" />
                     </li>
                     <li>
                         <Icon name="find" />
                         <span>
-                            <u>F</u>ind
+                            <u>찾</u>기
                         </span>
                         <div className="right-arrow" />
                     </li>
                     <li>
                         <Icon name="help" />
                         <span>
-                            <u>H</u>elp
+                            <u>도</u>움말
                         </span>
                     </li>
                     <li>
                         <Icon name="run" />
                         <span>
-                            <u>R</u>un
+                            <u>실</u>행
                         </span>
                     </li>
                     <div className="horizontal" />
                     <li>
                         <Icon name="shutdown" />
                         <span>
-                            Shu<u>t</u> Down..
+                            시스템 <u>종</u>료
                         </span>
                     </li>
                 </ul>
