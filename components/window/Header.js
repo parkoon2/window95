@@ -25,7 +25,7 @@ const Header = props => {
                 <div className="btn">
                     <Icon size="s" name="minimize" />
                 </div>
-                <div className="btn" onClick={handleResizing}>
+                <div className="btn" /*onClick={handleResizing}*/>
                     <Icon size="s" name="fullscreen" />
                 </div>
                 <div className="btn" onClick={onClose}>

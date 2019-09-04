@@ -3,6 +3,7 @@ const express = require('express')
 const mkdir = require('mkdirp')
 const path = require('path')
 const fs = require('fs')
+const mongoose = require('mongoose')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const routes = require('../routes')
@@ -10,7 +11,7 @@ const routes = require('../routes')
 const handle = routes.getRequestHandler(app)
 const config = require('./config')
 const middlewares = require('./middlewares')
-const { contact } = require('./api')
+const { contact, portfolio } = require('./api')
 
 require('dotenv').config()
 
@@ -27,66 +28,33 @@ const getToday = () => {
     return today
 }
 
-var portfolio = multer.diskStorage({
-    destination: function(req, file, cb) {
-        let des = path.join(__dirname, `./uploads/portfolio`)
-
-        console.log('!!!!!!!!!!!!!!!!!!!!', des)
-        let isDirExists = fs.existsSync(des) && fs.lstatSync(des).isDirectory()
-
-        if (!isDirExists) mkdir.sync(des)
-        cb(null, des)
-    },
-    filename: function(req, file, cb) {
-        const savedName = Date.now() + '-' + file.originalname
-        req.savedName = savedName
-        cb(null, savedName)
-    }
-})
-
-var upload = multer({ storage: portfolio })
+// mongoose
+//     .connect(config.DB_URI, { useNewUrlParser: true, useFindAndModify: false })
+//     .then(() => {
+//         console.log('Database connected')
+//     })
+//     .catch(err => console.error(err))
 
 app.prepare()
     .then(() => {
         const server = express()
 
+        console.log('config.DB_URI', config.DB_URI, process.env.DB_URI)
+
         server.use(express.static(path.join(__dirname, 'uploads')))
 
-        try {
-            fs.unlinkSync(
-                path.join(__dirname, './uploads/photos-1566099471716.png')
-            )
-        } catch (err) {
-            console.log(err)
-        }
+        // try {
+        //     fs.unlinkSync(
+        //         path.join(__dirname, './uploads/photos-1566099471716.png')
+        //     )
+        // } catch (err) {
+        //     console.log(err)
+        // }
 
         middlewares(server)
 
         server.use('/api/v1/contact', contact)
-
-        // server.get("/posts/:id", (req, res) => {
-        //   return app.render(req, res, "/posts/detail", { id: req.params.id });
-        // });
-
-        server.post('/api/v1/portfolio', upload.array('photos', 12), function(
-            req,
-            res,
-            next
-        ) {
-            // req.files is array of `photos` files
-            // req.body will contain the text fields, if there were any
-            // form data ==> req.body & req.files
-
-            console.log('========= LOG START =======')
-            console.log(req.savedName)
-            console.log('========= LOG END =========')
-
-            console.log('========= LOG START =======')
-            console.log(req)
-            console.log('========= LOG END =========')
-
-            res.json({ filename: req.savedName })
-        })
+        server.use('/api/v1/portfolio', portfolio)
 
         server.use(handle).listen(config.PORT, err => {
             if (err) throw err
