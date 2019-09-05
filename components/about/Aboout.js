@@ -28,7 +28,7 @@ const About = ({ onClose, x, y, title }) => {
                     checked={currentTab === 'tab01'}
                     onChange={handleTabChange}
                 />
-                <label htmlFor="tab01">General</label>
+                <label htmlFor="tab01">정보</label>
                 <input
                     type="radio"
                     name="tab"
@@ -36,7 +36,7 @@ const About = ({ onClose, x, y, title }) => {
                     checked={currentTab === 'tab02'}
                     onChange={handleTabChange}
                 />
-                <label htmlFor="tab02">Performance</label>
+                <label htmlFor="tab02">스킬</label>
                 <input
                     type="radio"
                     name="tab"
@@ -44,7 +44,7 @@ const About = ({ onClose, x, y, title }) => {
                     checked={currentTab === 'tab03'}
                     onChange={handleTabChange}
                 />
-                <label htmlFor="tab03">History</label>
+                <label htmlFor="tab03">연혁</label>
 
                 {/* General */}
                 <div className="contents__box box--1">
@@ -52,12 +52,12 @@ const About = ({ onClose, x, y, title }) => {
                         <div className="contents__image">
                             <img
                                 className="avatar"
-                                src="static/images/landing.jpg"
+                                src="static/images/avatar.jpg"
                             />
                         </div>
                         <div className="contents__body">
                             <div className="body__row">
-                                <div className="row__title">I am:</div>
+                                <div className="row__title">나:</div>
                                 <ul>
                                     <li>박종혁</li>
                                     <li>1990. 09. 17</li>
@@ -80,7 +80,7 @@ const About = ({ onClose, x, y, title }) => {
                                 </ul>
                             </div>
                             <div className="body__row">
-                                <div className="row__title">Pros:</div>
+                                <div className="row__title">장점:</div>
                                 <ul>
                                     <li>이것이 나의 장점 1</li>
                                     <li>이것이 나의 장점 2</li>
@@ -88,7 +88,7 @@ const About = ({ onClose, x, y, title }) => {
                                 </ul>
                             </div>
                             <div className="body__row">
-                                <div className="row__title">Cons:</div>
+                                <div className="row__title">단점:</div>
 
                                 <ul>
                                     <li>이것이 나의 단점 1</li>
@@ -129,7 +129,7 @@ const About = ({ onClose, x, y, title }) => {
                         </div>
                         <div className="contents__body">
                             <div className="body__row">
-                                <div className="row__title">Skill:</div>
+                                <div className="row__title">기술들:</div>
                                 <ul>
                                     <li>HTML / CSS</li>
                                     <li>Javascript / ES2015+</li>
@@ -154,7 +154,7 @@ const About = ({ onClose, x, y, title }) => {
                     <div className="flexbox">
                         <div className="contents__body">
                             <div className="body__row">
-                                <div className="row__title">Till now:</div>
+                                <div className="row__title">연혁:</div>
                                 <ul>
                                     <li>2009년 가천대 컴퓨터공학과</li>
                                     <li>2015년 가천대 SNS 연구실</li>
@@ -180,8 +180,8 @@ const About = ({ onClose, x, y, title }) => {
             </div>
 
             <div className="about__btns">
-                <Button onClick={onClose} title="OK" />
-                <Button onClick={onClose} title="Cancel" />
+                <Button onClick={onClose} title="확인" />
+                <Button onClick={onClose} title="취소" />
             </div>
         </Layout>
     )

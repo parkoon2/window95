@@ -1,18 +1,10 @@
 const ActionBar = () => {
     return (
         <div className="action-bar">
-            <span>
-                <u>F</u>ile
-            </span>
-            <span>
-                <u>E</u>dit
-            </span>
-            <span>
-                <u>S</u>earch
-            </span>
-            <span>
-                <u>H</u>elp
-            </span>
+            <span>파일</span>
+            <span>수정</span>
+            <span>검색</span>
+            <span>도움말</span>
         </div>
     )
 }

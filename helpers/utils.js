@@ -12,10 +12,10 @@ export const openNewWindow = url => {
 export const formatAMPM = date => {
     let hours = date.getHours()
     let minutes = date.getMinutes()
-    let ampm = hours >= 12 ? 'pm' : 'am'
+    let ampm = hours >= 12 ? '오후' : '오전'
     hours = hours % 12
     hours = hours ? hours : 12 // the hour '0' should be '12'
     minutes = minutes < 10 ? '0' + minutes : minutes
-    let strTime = hours + ':' + minutes + ' ' + ampm
+    let strTime = ampm + ' ' + hours + ':' + minutes
     return strTime
 }
