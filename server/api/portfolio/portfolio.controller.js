@@ -1,11 +1,9 @@
 const Portfolio = require('../../models/portfolio')
+const fs = require('fs')
+const path = require('path')
 
 exports.createPortfolio = (req, res) => {
     const portfolioData = JSON.parse(req.body.portfolio)
-
-    console.log('========= LOG START =======')
-    console.log(portfolioData)
-    console.log('========= LOG END =========')
 
     const portfolio = new Portfolio(portfolioData)
 
@@ -22,7 +20,22 @@ exports.createPortfolio = (req, res) => {
 exports.deletePortfolio = (req, res) => {
     const portfolioId = req.params.id
 
-    Portfolio.remove({ _id: portfolioId }, err => {
+    // 파일 지우기
+    Portfolio.findById(portfolioId, (err, foundPortfolio) => {
+        if (err) return res.status(422).send(err)
+
+        foundPortfolio.images.forEach(image => {
+            try {
+                fs.unlinkSync(
+                    path.join(__dirname, `../../uploads/port-images/${image}`)
+                )
+            } catch (err) {
+                console.log(err)
+            }
+        })
+    })
+
+    Portfolio.deleteOne({ _id: portfolioId }, err => {
         if (err) return res.status(422).send(err)
 
         res.json({

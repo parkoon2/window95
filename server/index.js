@@ -46,14 +46,6 @@ app.prepare()
 
         server.use(express.static(path.join(__dirname, 'uploads')))
 
-        // try {
-        //     fs.unlinkSync(
-        //         path.join(__dirname, './uploads/photos-1566099471716.png')
-        //     )
-        // } catch (err) {
-        //     console.log(err)
-        // }
-
         middlewares(server)
 
         server.use('/api/v1/contact', contact)
