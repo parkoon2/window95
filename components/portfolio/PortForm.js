@@ -32,7 +32,7 @@ const PortForm = ({ onClose, x, y, title }) => {
         deleteTag,
         deleteFile,
         deleteAllTags
-    } = useFormValidation(INITIAL_VALUE, portfolioValidator)
+    } = useFormValidation(INITIAL_VALUE, portfolioValidator, onClose)
 
     const windowCtx = useContext(windowContext)
 

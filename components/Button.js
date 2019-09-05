@@ -13,6 +13,13 @@ const Button = ({ onClick, title, name, disabled }) => {
     return (
         <button
             className="btn__container"
+            style={
+                disabled
+                    ? {
+                          color: '#ecf0f1'
+                      }
+                    : {}
+            }
             onClick={() => {
                 if (disabled) return
 

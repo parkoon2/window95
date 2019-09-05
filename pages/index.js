@@ -4,8 +4,9 @@ import { windowContext } from '../context/windowContext'
 import Nav from '../components/Nav'
 import Warning from '../components/Warning'
 import PortForm from '../components/portfolio/PortForm'
+import { getPortfolios } from '../actions'
 
-const Home = ({ portfolios }) => {
+const Home = () => {
     const windowCtx = useContext(windowContext)
     const { windows, warning, warningMessage } = windowCtx
 
@@ -37,7 +38,7 @@ const Home = ({ portfolios }) => {
         ))
     return (
         <div className="main">
-            <Nav portfolios={portfolios} />
+            <Nav />
             {windows && renderWindows(windows)}
 
             {warning && <Warning message={warningMessage} />}
@@ -45,39 +46,6 @@ const Home = ({ portfolios }) => {
     )
 }
 
-Home.getInitialProps = () => {
-    let portfolios = [
-        {
-            id: 'id',
-            title: 'Portfolio Title',
-            icon: 'portfolio',
-            body: `Contrary to popular belief, Lorem Ipsum is not
-            simply random text. It has roots in a piece of
-            classical Latin literature from 45 BC, making it
-            over 2000 years old. Richard McClintock, a Latin
-            professor at Hampden-Sydney College in Virginia,
-            looked up one of the more obscure Latin words,
-            consectetur, from a Lorem Ipsum passage, and
-            going through the cites of the word in classical
-            literature, discovered the undoubtable source.`,
-            tech: ['Javascript', 'HTML', 'CSS', 'Node.js'],
-            git: 'https://github.com/parkoon',
-            images: ['static/images/landing.jpg']
-        },
-        {
-            id: 'id',
-            title: 'KT 화상 컨설팅',
-            icon: 'portfolio',
-            body: `화상으로 상담 할 수 있는 웹 페이지.`,
-            tech: ['Javascript', 'HTML', 'CSS', 'webrtc'],
-            git: 'https://github.com/parkoon',
-            images: ['static/images/landing.jpg']
-        }
-    ]
-
-    return {
-        portfolios
-    }
-}
+Home.getInitialProps = async () => {}
 
 export default Home

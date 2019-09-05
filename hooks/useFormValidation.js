@@ -1,13 +1,18 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
+import { createPortfolio } from '../actions'
+import { toastContext } from '../context/toastContext'
 
-const useFormValidation = (initialState, validate) => {
+const useFormValidation = (initialState, validate, close) => {
     const [values, setValues] = useState(initialState)
     const [errors, setErrors] = useState({})
     const [isSubmitting, setSubmitting] = useState(false)
 
+    const toastCtx = useContext(toastContext)
+
     useEffect(() => {
         if (isSubmitting) {
+            alert('여긴 아니지..')
             const noErrors = Object.keys(errors).length === 0
 
             if (noErrors) {
@@ -18,31 +23,28 @@ const useFormValidation = (initialState, validate) => {
                     // 서버로 이미지 업로드를 위한 FormData 생성
                     const formData = new FormData()
 
-                    values.photos.forEach(photo =>
+                    const photoContrainer = []
+
+                    values.photos.forEach(photo => {
                         formData.append('photos', photo.file)
-                    )
+
+                        photoContrainer.push(photo.file.name)
+                    })
 
                     const filteredValue = Object.assign({}, values)
                     delete filteredValue.photos
                     delete filteredValue.tech
+                    filteredValue.images = photoContrainer
                     formData.append('portfolio', JSON.stringify(filteredValue))
 
-                    axios({
-                        method: 'post',
-                        url: '/api/v1/portfolio',
-                        data: formData
-                        // config: {
-                        //     headers: { 'Content-Type': 'multipart/form-data' }
-                        // }
-                    })
-                        .then(function(response) {
-                            //handle success
-                            console.log('success', response)
+                    createPortfolio(formData)
+                        .then(res => {
+                            toastCtx.addToast(
+                                '포트폴리오가 정상적으로 등록되었습니다.'
+                            )
+                            close()
                         })
-                        .catch(function(response) {
-                            //handle error
-                            console.log('failure', response)
-                        })
+                        .catch(err => console.error(err))
                 }
 
                 setSubmitting(false)
@@ -59,6 +61,8 @@ const useFormValidation = (initialState, validate) => {
         reader.onload = () => {
             const url = reader.result
             const name = file.name
+
+            console.log('file.name', file.name)
 
             const photo = {
                 id: name + Date.now(),

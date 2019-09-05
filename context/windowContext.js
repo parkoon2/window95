@@ -6,6 +6,7 @@ import Folder from '../components/window/Folder'
 import About from '../components/about/Aboout'
 import Google from '../components/internet/Google'
 import ContactForm from '../components/contact/ContactForm'
+import PortfolioFolder from '../components/portfolio/PortfolioFolder'
 
 export const windowContext = createContext()
 const { Provider, Consumer } = windowContext
@@ -16,7 +17,6 @@ export class WindowContextProvider extends React.Component {
         warning: false,
         warningMessage: ''
     }
-
     showWarning = message => {
         this.setState({
             warning: true,
@@ -95,7 +95,7 @@ export class WindowContextProvider extends React.Component {
         })
     }
 
-    openFolder = (title, items) => {
+    openPortfolioFoler = title => {
         const id = uuidv1()
         const { windows } = this.state
 
@@ -105,9 +105,8 @@ export class WindowContextProvider extends React.Component {
                 {
                     id,
                     component: (
-                        <Folder
+                        <PortfolioFolder
                             title={title}
-                            items={items}
                             onClose={() => this.close(id)}
                             x={333 + windows.length * 20}
                             y={100 + windows.length * 20}
@@ -177,7 +176,7 @@ export class WindowContextProvider extends React.Component {
             warning,
             warningMessage,
             openPortfolio: this.openPortfolio,
-            openFolder: this.openFolder,
+            openPortfolioFoler: this.openPortfolioFoler,
             hideWarning: this.hideWarning,
             showWarning: this.showWarning,
             openPorfolioForm: this.openPorfolioForm,

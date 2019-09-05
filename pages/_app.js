@@ -21,7 +21,7 @@ class MyApp extends App {
         let pageProps = {}
 
         let isLoaded = false
-
+        console.log('getInitialProps in _app.js')
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx)
         }

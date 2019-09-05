@@ -1,6 +1,19 @@
+.images__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.images__box .box__btns {
+    margin-top: 4px;
+}
+
 .portfolio__image {
-    width: 277px;
-    box-shadow: 5px 5px 2px 1px #000;
+    width: 455px;
+    height: 257px;
+    /* box-shadow: 5px 5px 2px 1px #000; */
+    border: 1px dotted #000;
 }
 
 .portfolio__about h1,
@@ -11,8 +24,14 @@
     margin-bottom: 20px;
 }
 
+.portfolio__tools {
+    margin-top: 12px;
+    text-align: right;
+}
+
 .portfolio__about p {
-    line-height: 1.2rem;
+    line-height: 1.3rem;
+    word-wrap: break-word;
 }
 
 .portfolio__techsheet ul {

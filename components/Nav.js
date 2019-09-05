@@ -2,7 +2,7 @@ import Icon from './Icon'
 import { windowContext } from '../context/windowContext'
 import { useContext } from 'react'
 
-const Nav = ({ portfolios }) => {
+const Nav = () => {
     const windowCtx = useContext(windowContext)
     const isAuthenticated = true
 
@@ -49,10 +49,9 @@ const Nav = ({ portfolios }) => {
             <li
                 className="item"
                 style={{ top: 370, left: 0 }}
-                onDoubleClick={windowCtx.openFolder.bind(
+                onDoubleClick={windowCtx.openPortfolioFoler.bind(
                     this,
-                    '포트폴리오',
-                    portfolios
+                    '포트폴리오'
                 )}
             >
                 <Icon name="briefcase" title="포트폴리오" />
