@@ -40,7 +40,7 @@ const PortForm = ({ onClose, x, y, title }) => {
         <Layout onClose={onClose} x={x} y={y} title={title}>
             <div className="portfolio__form">
                 <div className="form__text">
-                    <label>title: </label>
+                    <label>제목: </label>
                     <input
                         value={values.title}
                         onChange={handleChange}
@@ -52,18 +52,18 @@ const PortForm = ({ onClose, x, y, title }) => {
                     {errors.title && <p className="error">{errors.title}</p>}
                 </div>
                 <div className="form__text">
-                    <label>body: </label>
+                    <label>설명: </label>
                     <textarea
                         value={values.body}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        rows={15}
+                        rows={7}
                         name="body"
                     />
                     {errors.body && <p className="error">{errors.body}</p>}
                 </div>
                 <div className="form__text">
-                    <label>date: </label>
+                    <label>날짜: </label>
                     <DatePicker
                         className="datepicker"
                         selected={values.startDate}
@@ -88,7 +88,7 @@ const PortForm = ({ onClose, x, y, title }) => {
                 </div>
 
                 <div className="form__text">
-                    <label>techs: </label>
+                    <label>기술: </label>
                     <input
                         type="text"
                         name="tech"
@@ -118,7 +118,7 @@ const PortForm = ({ onClose, x, y, title }) => {
                 </div>
 
                 <div className="form__image">
-                    <label htmlFor="photos">image: </label>
+                    <label htmlFor="photos">이미지: </label>
                     <input
                         id="photos"
                         type="file"
@@ -127,13 +127,15 @@ const PortForm = ({ onClose, x, y, title }) => {
                     />
                     {values.photos &&
                         values.photos.map((photo, index) => (
-                            <div key={index}>
+                            <div className="image__box" key={index}>
                                 <img src={photo.url} />
-                                <div
-                                    className="image__name"
-                                    onClick={() => deleteFile(photo.id)}
-                                >
-                                    {photo.name}
+                                <div>
+                                    <span
+                                        className="image__name"
+                                        onClick={() => deleteFile(photo.id)}
+                                    >
+                                        {photo.name}
+                                    </span>
                                     <Icon name="close" size="s" />
                                 </div>
                             </div>
@@ -144,21 +146,31 @@ const PortForm = ({ onClose, x, y, title }) => {
 
                 <div className="form__text">
                     <div className="resources--git">
-                        <label>git : </label>
+                        <label>저장소 : </label>
                         <input type="text" name="git" onChange={handleChange} />
+                    </div>
+                </div>
+                <div className="form__text">
+                    <div className="resources--demo">
+                        <label>데모 : </label>
+                        <input
+                            type="text"
+                            name="demo"
+                            onChange={handleChange}
+                        />
                     </div>
                 </div>
 
                 <div className="form__submit">
                     <Button
-                        title="submit"
+                        title="저장"
                         disabled={isSubmitting}
                         className="submit__ok"
                         onClick={handleSubmit}
                     />
                     <Button
                         onClick={onClose}
-                        title="cancel"
+                        title="취소"
                         className="submit__cancel"
                     />
                 </div>

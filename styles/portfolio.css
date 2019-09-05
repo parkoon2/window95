@@ -47,7 +47,7 @@
 
 /* ------- portfolio form ------- */
 .portfolio__form {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     /* display: flex;
     flex-direction: column; */
@@ -56,6 +56,10 @@
 .portfolio__form .form__text {
     padding: 10px;
     user-select: none;
+}
+
+.portfolio__form .form__image .image__box {
+    margin-top: 12px;
 }
 
 .portfolio__form .form__submit {

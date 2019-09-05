@@ -23,6 +23,7 @@ exports.deletePortfolio = (req, res) => {
     // 파일 지우기
     Portfolio.findById(portfolioId, (err, foundPortfolio) => {
         if (err) return res.status(422).send(err)
+        if (!foundPortfolio.images) return
 
         foundPortfolio.images.forEach(image => {
             try {
