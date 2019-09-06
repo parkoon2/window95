@@ -12,10 +12,17 @@ export class MenuContextProvider extends React.Component {
         this.setState(prevState => ({ active: !prevState.active }))
     }
 
+    hideMenu = () => {
+        this.setState({
+            active: false
+        })
+    }
+
     render() {
         const value = {
             toggle: this.toggle,
-            active: this.state.active
+            active: this.state.active,
+            hideMenu: this.hideMenu
         }
 
         return <Provider value={value}>{this.props.children}</Provider>

@@ -1,0 +1,46 @@
+.login__container {
+    display: flex;
+    padding-top: 12px;
+}
+
+.login__container .login__image {
+    flex: 1;
+    text-align: center;
+}
+
+.login__container .login__form {
+    flex: 3;
+    padding: 0 23px;
+}
+
+.login__container .login__form .form__id {
+    margin-bottom: 7px;
+}
+.login__container .login__form .form__pwd,
+.login__container .login__form .form__id {
+    display: flex;
+    align-items: center;
+}
+.login__container .login__form .form__pwd label,
+.login__container .login__form .form__id label {
+    font-size: 0.9rem;
+    width: 86px;
+}
+
+.login__container .login__form input {
+    width: 90%;
+}
+
+.login__container .login__form .form__title {
+    line-height: 1.2rem;
+    margin-bottom: 12px;
+    font-size: 0.93rem;
+}
+
+.login__container .login__btns {
+    flex: 1;
+}
+
+.login__container .login__btns .btns__ok {
+    margin-bottom: 12px;
+}

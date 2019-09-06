@@ -10,12 +10,15 @@ import Icon, {
     Documents,
     Programs
 } from './Icon'
+import { windowContext } from '../context/windowContext'
 
 const Menu = () => {
-    const menu = useContext(menuContext)
+    const menuCtx = useContext(menuContext)
+    const windowCtx = useContext(windowContext)
+
     return (
         <>
-            <div className={classnames('menu', { active: menu.active })}>
+            <div className={classnames('menu', { active: menuCtx.active })}>
                 <div className="menu__title">
                     Window<span>95</span>
                 </div>
@@ -60,7 +63,27 @@ const Menu = () => {
                             <u>실</u>행
                         </span>
                     </li>
+                    {/* <div className="horizontal" /> */}
                     <div className="horizontal" />
+                    <li
+                        onClick={() => {
+                            windowCtx.openLoginForm()
+                            menuCtx.hideMenu()
+                        }}
+                    >
+                        <Icon name="login" />
+                        <span>
+                            로그<u>인</u>
+                        </span>
+                    </li>
+                    {/* <div className="horizontal" /> */}
+
+                    <li>
+                        <Icon name="login" />
+                        <span>
+                            로그아<u>웃</u>
+                        </span>
+                    </li>
                     <li>
                         <Icon name="shutdown" />
                         <span>
