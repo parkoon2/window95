@@ -63,12 +63,15 @@ export const getPortfolioById = id => {
 /** ------- login ------- */
 
 export const login = user => {
-    const temp = {
-        id: 'parkoon',
-        password: '1234'
-    }
     return axiosInstance
-        .post('/auth/login', temp)
+        .post('/auth/login', user)
+        .then(handleSuccess)
+        .catch(handleError)
+}
+
+export const register = user => {
+    return axiosInstance
+        .post('/auth/regist', user)
         .then(handleSuccess)
         .catch(handleError)
 }

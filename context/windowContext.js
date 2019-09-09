@@ -8,6 +8,7 @@ import Google from '../components/internet/Google'
 import ContactForm from '../components/contact/ContactForm'
 import PortfolioFolder from '../components/portfolio/PortfolioFolder'
 import LoginForm from '../components/auth/LoginForm'
+import RegisterForm from '../components/auth/RegisterForm'
 
 export const windowContext = createContext()
 const { Provider, Consumer } = windowContext
@@ -86,6 +87,27 @@ export class WindowContextProvider extends React.Component {
                     component: (
                         <LoginForm
                             title="로그인"
+                            onClose={() => this.close(id)}
+                            x={333 + windows.length * 20}
+                            y={100 + windows.length * 20}
+                        />
+                    )
+                }
+            ]
+        })
+    }
+    openRegisterForm = () => {
+        const id = uuidv1()
+        const { windows } = this.state
+
+        this.setState({
+            windows: [
+                ...windows,
+                {
+                    id,
+                    component: (
+                        <RegisterForm
+                            title="사용자 등록"
                             onClose={() => this.close(id)}
                             x={333 + windows.length * 20}
                             y={100 + windows.length * 20}
@@ -205,7 +227,8 @@ export class WindowContextProvider extends React.Component {
             openAboutMe: this.openAboutMe,
             openInternet: this.openInternet,
             openContact: this.openContact,
-            openLoginForm: this.openLoginForm
+            openLoginForm: this.openLoginForm,
+            openRegisterForm: this.openRegisterForm
             // close: this.close
         }
 

@@ -14,6 +14,7 @@ import { WindowContextProvider } from '../context/windowContext'
 import ContactForm from '../components/contact/ContactForm'
 import { ToastProvider } from '../context/toastContext'
 import LoginForm from '../components/auth/LoginForm'
+import RegisterForm from '../components/auth/RegisterForm'
 // import '../styles/common.css'
 
 // import 'react-toastify/dist/ReactToastify.css'

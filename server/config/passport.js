@@ -19,7 +19,9 @@ passport.use(
                 if (err) return done(err)
 
                 if (!foundUser) {
-                    return done(null, false, { message: 'incorrect user id' })
+                    return done(null, false, {
+                        message: '존재하지 않는 아이디입니다'
+                    })
                 }
 
                 const isCorrect = bcrypt.compareSync(
@@ -29,7 +31,7 @@ passport.use(
 
                 if (!isCorrect)
                     return done(null, false, {
-                        message: 'incorrect user password'
+                        message: '패스워드가 일치하지 않습니다'
                     })
 
                 return done(null, foundUser)
@@ -53,7 +55,9 @@ passport.use(
                 console.log('foundUser...', foundUser)
 
                 if (foundUser) {
-                    return done(null, false, { message: 'user already taken' })
+                    return done(null, false, {
+                        message: '이미 등록되어 있는 아이디입니다.'
+                    })
                 }
 
                 const hashedPassword = bcrypt.hashSync(

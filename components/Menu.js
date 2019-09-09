@@ -11,10 +11,12 @@ import Icon, {
     Programs
 } from './Icon'
 import { windowContext } from '../context/windowContext'
+import { isAuthenticated } from '../helpers/auth'
 
 const Menu = () => {
     const menuCtx = useContext(menuContext)
     const windowCtx = useContext(windowContext)
+    const isLoggedIn = isAuthenticated()
 
     return (
         <>
@@ -63,27 +65,44 @@ const Menu = () => {
                             <u>실</u>행
                         </span>
                     </li>
-                    {/* <div className="horizontal" /> */}
-                    <div className="horizontal" />
                     <li
                         onClick={() => {
-                            windowCtx.openLoginForm()
+                            windowCtx.openRegisterForm()
                             menuCtx.hideMenu()
                         }}
                     >
-                        <Icon name="login" />
+                        <Icon name="run" />
                         <span>
-                            로그<u>인</u>
+                            <u>사</u>용자 등록
                         </span>
                     </li>
                     {/* <div className="horizontal" /> */}
+                    <div className="horizontal" />
 
-                    <li>
-                        <Icon name="login" />
-                        <span>
-                            로그아<u>웃</u>
-                        </span>
-                    </li>
+                    {/* 로그인 or 로그아웃 UI */}
+                    {isLoggedIn ? (
+                        <li>
+                            <Icon name="login" />
+                            <span>
+                                로그아<u>웃</u>
+                            </span>
+                        </li>
+                    ) : (
+                        <li
+                            onClick={() => {
+                                windowCtx.openLoginForm()
+                                menuCtx.hideMenu()
+                            }}
+                        >
+                            <Icon name="login" />
+                            <span>
+                                로그<u>인</u>
+                            </span>
+                        </li>
+                    )}
+
+                    {/* <div className="horizontal" /> */}
+
                     <li>
                         <Icon name="shutdown" />
                         <span>

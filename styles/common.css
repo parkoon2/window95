@@ -56,3 +56,8 @@ i {
     font-weight: bold;
     font-size: 0.9rem;
 }
+
+/* ------ margin ------- */
+.mb-7 {
+    margin-bottom: 7px;
+}
