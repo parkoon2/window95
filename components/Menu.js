@@ -67,7 +67,7 @@ const Menu = () => {
                         <span>실행</span>
                     </li>
                     <li onClick={handleRegist}>
-                        <Icon name="run" />
+                        <Icon name="user" />
                         <span>사용자 등록</span>
                     </li>
                     {/* <div className="horizontal" /> */}
