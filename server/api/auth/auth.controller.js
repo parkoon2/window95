@@ -13,7 +13,7 @@ exports.login = (req, res, next) => {
 
         const loggedUser = {
             id: user.userId,
-            role: user.userId === 'parkoon' ? 'owner' : 'guest'
+            role: user.userId === 'devparkoon' ? 'owner' : 'guest'
         }
 
         const token = jwt.sign(loggedUser, process.env.JWT_SECRET, {

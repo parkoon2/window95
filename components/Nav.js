@@ -1,21 +1,18 @@
 import Icon from './Icon'
 import { windowContext } from '../context/windowContext'
 import { useContext } from 'react'
+import { userConext } from '../context/userContext'
 
 const Nav = () => {
     const windowCtx = useContext(windowContext)
-    const isAuthenticated = true
+    const userCtx = useContext(userConext)
 
-    const createPortfolioHandler = () => {
-        if (!isAuthenticated) {
-            windowCtx.showWarning(
-                '관리자만 접근 할 수 있습니다. 관리자로 로그인 해주세요.'
-            )
-            return
-        }
-
-        windowCtx.openPorfolioForm()
-    }
+    const createPortfolioHandler = () =>
+        userCtx.isOwner()
+            ? windowCtx.openPorfolioForm()
+            : windowCtx.showWarning(
+                  '관리자만 접근 할 수 있습니다. 관리자로 로그인 해주세요.'
+              )
     return (
         <ul className="window__container">
             <li
