@@ -26,6 +26,11 @@ const Menu = () => {
         menuCtx.hideMenu()
     }
 
+    const handleRegist = () => {
+        windowCtx.openRegisterForm()
+        menuCtx.hideMenu()
+    }
+
     return (
         <>
             <div className={classnames('menu', { active: menuCtx.active })}>
@@ -35,54 +40,35 @@ const Menu = () => {
                 <ul>
                     <li>
                         <Icon name="programs" />
-                        <span>
-                            <u>프</u>로그램
-                        </span>
+                        <span>프로그램</span>
                         <div className="right-arrow" />
                     </li>
                     <li>
                         <Icon name="documents" />
-                        <span>
-                            <u>문</u>서
-                        </span>
+                        <span>문서</span>
                         <div className="right-arrow" />
                     </li>
                     <li>
                         <Icon name="settings" />
-                        <span>
-                            <u>설</u>정
-                        </span>
+                        <span>설정</span>
                         <div className="right-arrow" />
                     </li>
                     <li>
                         <Icon name="find" />
-                        <span>
-                            <u>찾</u>기
-                        </span>
+                        <span>찾기</span>
                         <div className="right-arrow" />
                     </li>
                     <li>
                         <Icon name="help" />
-                        <span>
-                            <u>도</u>움말
-                        </span>
+                        <span>도움말</span>
                     </li>
                     <li>
                         <Icon name="run" />
-                        <span>
-                            <u>실</u>행
-                        </span>
+                        <span>실행</span>
                     </li>
-                    <li
-                        onClick={() => {
-                            windowCtx.openRegisterForm()
-                            menuCtx.hideMenu()
-                        }}
-                    >
+                    <li onClick={handleRegist}>
                         <Icon name="run" />
-                        <span>
-                            <u>사</u>용자 등록
-                        </span>
+                        <span>사용자 등록</span>
                     </li>
                     {/* <div className="horizontal" /> */}
                     <div className="horizontal" />
@@ -91,16 +77,12 @@ const Menu = () => {
                     {userCtx.user ? (
                         <li onClick={handleLogout}>
                             <Icon name="login" />
-                            <span>
-                                로그아<u>웃</u>
-                            </span>
+                            <span>로그아웃</span>
                         </li>
                     ) : (
                         <li onClick={handleLogin}>
                             <Icon name="login" />
-                            <span>
-                                로그<u>인</u>
-                            </span>
+                            <span>로그인</span>
                         </li>
                     )}
 
