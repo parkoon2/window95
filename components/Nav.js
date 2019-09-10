@@ -13,6 +13,10 @@ const Nav = () => {
             : windowCtx.showWarning(
                   '관리자만 접근 할 수 있습니다. 관리자로 로그인 해주세요.'
               )
+
+    const handleTrashcan = () => {
+        alert('공사중입니다')
+    }
     return (
         <ul className="window__container">
             <li
@@ -25,7 +29,7 @@ const Nav = () => {
             <li
                 className="item"
                 style={{ top: 100, left: 0 }}
-                // onDoubleClick={() => handleDoubleClick(icon)}
+                onDoubleClick={handleTrashcan}
             >
                 <Icon name="recyclebin" title="휴지통" />
             </li>

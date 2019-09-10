@@ -41,7 +41,7 @@ const ContactForm = ({ x, y, onClose, title }) => {
             x={x}
             y={y}
             onClose={onClose}
-            width="352px"
+            width="355px"
             height="515px"
         >
             <div className="contact__container">
