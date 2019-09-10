@@ -2,13 +2,10 @@ const next = require('next')
 const express = require('express')
 const mkdir = require('mkdirp')
 const path = require('path')
-const fs = require('fs')
-
 const mongoose = require('mongoose')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const routes = require('../routes')
-// const handle = app.getRequestHandler();
 const handle = routes.getRequestHandler(app)
 const middlewares = require('./middlewares')
 const { contact, portfolio, auth } = require('./api')
@@ -31,7 +28,6 @@ app.prepare()
         const server = express()
 
         server.use(express.static(path.join(__dirname, 'uploads')))
-
         middlewares(server)
 
         server.use('/api/v1/contact', contact)

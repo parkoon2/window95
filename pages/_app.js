@@ -2,7 +2,6 @@ import React from 'react'
 import App, { Container } from 'next/app'
 import BaseLayout from '../components/layout/BaseLayout'
 import Loading from '../components/Loading'
-import Google from '../components/internet/Google'
 import ToastPopup from '../components/ToastPopup'
 // import '../styles/main.scss'
 
@@ -11,11 +10,11 @@ import '../styles/index.css'
 import Footer from '../components/shared/Footer'
 import { MenuContextProvider } from '../context/menuContext'
 import { WindowContextProvider } from '../context/windowContext'
-import ContactForm from '../components/contact/ContactForm'
 import { ToastProvider } from '../context/toastContext'
-import LoginForm from '../components/auth/LoginForm'
-import RegisterForm from '../components/auth/RegisterForm'
+import { clientAuth, serverAuth } from '../helpers/auth'
 // import '../styles/common.css'
+import Cookies from 'js-cookie'
+import { UserProvider } from '../context/userContext'
 
 // import 'react-toastify/dist/ReactToastify.css'
 class MyApp extends App {
@@ -23,14 +22,18 @@ class MyApp extends App {
         let pageProps = {}
 
         let isLoaded = false
+
         // 모든 페이지를 이동 할 떄 경유
-        // 여기서 권한 체크를 해야해
+        // 여기서 권한 체크를
+        // 서버쪽이랑 클라이언트 쪽을 별개로 처리
+        // process.browser로 클라이언트인지 서버쪽인지 확인
+        let user = process.browser ? clientAuth() : serverAuth(ctx.req)
 
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx)
         }
 
-        return { pageProps, isLoaded }
+        return { pageProps, isLoaded, user }
     }
 
     componentDidMount() {
@@ -41,21 +44,23 @@ class MyApp extends App {
     _
 
     renderWindowIfLoaded = () => {
-        const { Component, pageProps, isLoaded } = this.props
+        const { Component, pageProps, isLoaded, user } = this.props
 
         return isLoaded ? (
             <Loading />
         ) : (
             <BaseLayout>
-                <ToastProvider>
-                    <WindowContextProvider>
-                        <MenuContextProvider>
-                            <Component {...pageProps} />
-                            <Footer />
-                            <ToastPopup />
-                        </MenuContextProvider>
-                    </WindowContextProvider>
-                </ToastProvider>
+                <UserProvider>
+                    <ToastProvider>
+                        <WindowContextProvider>
+                            <MenuContextProvider>
+                                <Component {...pageProps} user={user} />
+                                <Footer />
+                                <ToastPopup />
+                            </MenuContextProvider>
+                        </WindowContextProvider>
+                    </ToastProvider>
+                </UserProvider>
             </BaseLayout>
         )
     }

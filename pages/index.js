@@ -1,14 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Icon from '../components/Icon'
 import { windowContext } from '../context/windowContext'
 import Nav from '../components/Nav'
 import Warning from '../components/Warning'
 import PortForm from '../components/portfolio/PortForm'
 import { getPortfolios } from '../actions'
+import { userConext } from '../context/userContext'
 
-const Home = () => {
+const Home = props => {
     const windowCtx = useContext(windowContext)
+    const userCtx = useContext(userConext)
+
     const { windows, warning, warningMessage } = windowCtx
+
+    useEffect(() => {
+        const user = props.user
+        userCtx.setUser(user)
+    }, [])
 
     const handleDoubleClick = icon => {
         const { type } = icon.detail

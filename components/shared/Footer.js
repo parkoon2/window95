@@ -6,9 +6,8 @@ import { formatAMPM, openNewWindow } from '../../helpers/utils'
 import Icon from '../Icon'
 
 // import '../../styles/footer.css'
-const Footer = props => {
+const Footer = () => {
     const menu = useContext(menuContext)
-
     const [time, setTime] = useState(formatAMPM(new Date()))
 
     let timer = null

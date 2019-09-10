@@ -1,9 +1,11 @@
+import Cookies from 'js-cookie'
 import Layout from '../window/Layout'
 import Icon from '../Icon'
 import Button from '../Button'
 import { login } from '../../actions'
 import { useState, useContext } from 'react'
 import { toastContext } from '../../context/toastContext'
+import { userConext } from '../../context/userContext'
 
 const INITIAL_USER = {
     id: '',
@@ -14,10 +16,11 @@ const LoginForm = ({ x, y, onClose, title }) => {
     const [user, setUser] = useState(INITIAL_USER)
     const { addToast } = useContext(toastContext)
 
+    const userCtx = useContext(userConext)
+
     const handleInputChange = e => {
         const target = e.target
         const { name, value } = target
-
         setUser({
             ...user,
             [name]: value
@@ -27,13 +30,10 @@ const LoginForm = ({ x, y, onClose, title }) => {
     const handleSubmitForm = async () => {
         try {
             const res = await login(user)
-            const { token, user } = res
             onClose()
             addToast('로그인에 성공했습니다')
-
-            // 로그인 성공
-            localStorage.setItem('user', JSON.stringify(user))
-            localStorage.setItem('token', token)
+            userCtx.setUser(res.user)
+            Cookies.set('jwt', res.token)
         } catch (err) {
             if (err.message) {
                 alert(err.message)

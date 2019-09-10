@@ -20,7 +20,6 @@ const RegisterForm = ({ x, y, onClose, title }) => {
 
     const onInputChange = e => {
         const target = e.target
-        console.log(target.name, target.value)
         const value = target.type === 'checkbox' ? target.checked : target.value
         const name = target.name
         serUser({

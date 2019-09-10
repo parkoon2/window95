@@ -62,8 +62,6 @@ const useFormValidation = (initialState, validate, close) => {
             const url = reader.result
             const name = file.name
 
-            console.log('file.name', file.name)
-
             const photo = {
                 id: name + Date.now(),
                 name,

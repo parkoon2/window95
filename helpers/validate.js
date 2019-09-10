@@ -27,7 +27,6 @@ export const portfolioValidator = values => {
         errors.startDate = 'start date is required'
     }
 
-    console.log(errors)
     return errors
 }
 

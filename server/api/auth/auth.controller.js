@@ -1,13 +1,8 @@
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
-const jwtConfig = require('../../config/jwt')
 
 exports.login = (req, res, next) => {
     passport.authenticate('login', (err, user, info) => {
-        console.log('========= LOG START =======')
-        console.log(err, user, info)
-        console.log('========= LOG END =========')
-
         if (err) {
             return res.status(442).send(err)
         }
@@ -21,9 +16,7 @@ exports.login = (req, res, next) => {
             role: user.userId === 'parkoon' ? 'owner' : 'guest'
         }
 
-        console.log('logged user is...', loggedUser)
-
-        const token = jwt.sign(loggedUser, jwtConfig.secret, {
+        const token = jwt.sign(loggedUser, process.env.JWT_SECRET, {
             expiresIn: 60 * 60
         })
 
@@ -36,7 +29,6 @@ exports.login = (req, res, next) => {
 }
 
 exports.regist = (req, res, next) => {
-    console.log('regist')
     passport.authenticate('regist', (err, user, info) => {
         if (err) {
             return res.status(442).send(err)

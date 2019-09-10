@@ -52,8 +52,6 @@ passport.use(
             User.findOne({ userId: id }, (err, foundUser) => {
                 if (err) return done(err, null)
 
-                console.log('foundUser...', foundUser)
-
                 if (foundUser) {
                     return done(null, false, {
                         message: '이미 등록되어 있는 아이디입니다.'
@@ -65,12 +63,6 @@ passport.use(
                     BCRYPT_SALT_ROUNDS
                 )
 
-                console.log({
-                    userId: id,
-                    password: hashedPassword,
-                    username: req.body.username
-                })
-
                 const newUser = new User({
                     userId: id,
                     password: hashedPassword,
@@ -79,7 +71,6 @@ passport.use(
 
                 newUser.save((err, savedUser) => {
                     if (err) return done(err, null)
-                    console.log('user created...')
                     return done(null, savedUser)
                 })
             })

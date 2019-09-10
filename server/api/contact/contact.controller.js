@@ -3,9 +3,12 @@ const nodemailer = require('nodemailer')
 const handleContact = (req, res) => {
     const contact = req.body
 
-    const { name, email, subject, message } = contact
-
-    console.log(name, email, subject, message)
+    const { name, email, subject, message } = contact(
+        name,
+        email,
+        subject,
+        message
+    )
 
     let transporter = nodemailer.createTransport({
         service: 'gmail',

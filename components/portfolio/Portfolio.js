@@ -23,8 +23,7 @@ const Portfolio = props => {
 
     const toastCtx = useContext(toastContext)
 
-    const { title, body, git, images, techs, endDate, startDate, _id } = detail
-    console.log('detail', detail)
+    const { title, body, git, images, techs, _id } = detail
 
     let lastIndex = images.length - 1
 

@@ -207,7 +207,6 @@ export class WindowContextProvider extends React.Component {
     close = id => {
         this.setState({
             windows: this.state.windows.filter(Portfolio => {
-                console.log(Portfolio.id, id)
                 return Portfolio.id !== id
             })
         })

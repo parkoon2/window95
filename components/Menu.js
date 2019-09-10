@@ -1,23 +1,30 @@
 import React, { useContext } from 'react'
 import classnames from 'classnames'
 import { menuContext } from '../context/menuContext'
-import Icon, {
-    ShutDown,
-    Run,
-    Help,
-    Find,
-    Settings,
-    Documents,
-    Programs
-} from './Icon'
+import Icon from './Icon'
 import { windowContext } from '../context/windowContext'
-import { isAuthenticated } from '../helpers/auth'
+import { userConext } from '../context/userContext'
+import Cookies from 'js-cookie'
 
 const Menu = () => {
     const menuCtx = useContext(menuContext)
     const windowCtx = useContext(windowContext)
-    // const isLoggedIn = isAuthenticated()
-    const isLoggedIn = true
+    const userCtx = useContext(userConext)
+
+    const handleLogout = () => {
+        menuCtx.hideMenu()
+        setTimeout(() => {
+            if (confirm('로그아웃 하시겠습니까?')) {
+                Cookies.remove('jwt')
+                userCtx.setUser(null)
+            }
+        }, 300)
+    }
+
+    const handleLogin = () => {
+        windowCtx.openLoginForm()
+        menuCtx.hideMenu()
+    }
 
     return (
         <>
@@ -81,20 +88,15 @@ const Menu = () => {
                     <div className="horizontal" />
 
                     {/* 로그인 or 로그아웃 UI */}
-                    {isLoggedIn ? (
-                        <li>
+                    {userCtx.user ? (
+                        <li onClick={handleLogout}>
                             <Icon name="login" />
                             <span>
                                 로그아<u>웃</u>
                             </span>
                         </li>
                     ) : (
-                        <li
-                            onClick={() => {
-                                windowCtx.openLoginForm()
-                                menuCtx.hideMenu()
-                            }}
-                        >
+                        <li onClick={handleLogin}>
                             <Icon name="login" />
                             <span>
                                 로그<u>인</u>
