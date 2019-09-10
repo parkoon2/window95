@@ -16,7 +16,8 @@ import { isAuthenticated } from '../helpers/auth'
 const Menu = () => {
     const menuCtx = useContext(menuContext)
     const windowCtx = useContext(windowContext)
-    const isLoggedIn = isAuthenticated()
+    // const isLoggedIn = isAuthenticated()
+    const isLoggedIn = true
 
     return (
         <>

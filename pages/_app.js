@@ -23,7 +23,9 @@ class MyApp extends App {
         let pageProps = {}
 
         let isLoaded = false
-        console.log('getInitialProps in _app.js')
+        // 모든 페이지를 이동 할 떄 경유
+        // 여기서 권한 체크를 해야해
+
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx)
         }
